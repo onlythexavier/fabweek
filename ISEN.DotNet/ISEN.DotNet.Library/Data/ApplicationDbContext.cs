@@ -11,7 +11,8 @@ namespace ISEN.DotNet.Library.Data
     public class ApplicationDbContext : DbContext
     {
         // Ajouter les DbSets<> ici
-        // ...
+        public DbSet<Owner> OwnerCollection { get; set; }
+        public DbSet<Statement> StatementCollection { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
@@ -27,6 +28,11 @@ namespace ISEN.DotNet.Library.Data
 
             // Ajouter la définition des mappings d'entités avec les tables, et les relations ici
             // ...
+            builder.Entity<Owner>()
+                .ToTable("Owner");
+
+            builder.Entity<Owner>()
+                .ToTable("Statement");
         }
     }
 

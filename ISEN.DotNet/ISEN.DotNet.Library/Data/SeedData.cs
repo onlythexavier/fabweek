@@ -10,13 +10,19 @@ namespace ISEN.DotNet.Library.Data
     {
         private readonly ApplicationDbContext _context;
         private readonly ILogger<SeedData> _logger;
+        private readonly IOwnerRepository _ownerRepository;
+        private readonly IStatementRepository _statementRepository;
 
         public SeedData(
             ApplicationDbContext context,
-            ILogger<SeedData> logger)
+            ILogger<SeedData> logger,
+            IOwnerRepository ownerRepository,
+            IStatementRepository statementRepository)
         {
             _context = context;
             _logger = logger;
+            _ownerRepository = ownerRepository;
+            _statementRepository = statementRepository;
         }
 
         public void DropCreateDatabase()
