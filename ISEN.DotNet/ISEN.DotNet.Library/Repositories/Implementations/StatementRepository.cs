@@ -22,5 +22,12 @@ namespace ISEN.DotNet.Library.Repositories.Implementations
 
         public override IQueryable<Statement> EntityCollection
             => Context.StatementCollection.AsQueryable();
+
+        public override IQueryable<Statement> Includes(IQueryable<Statement> queryable)
+        {
+            queryable = base.Includes(queryable);
+            queryable = queryable.Include(e => e.Equipment);
+            return queryable;
+        }
     }
 }

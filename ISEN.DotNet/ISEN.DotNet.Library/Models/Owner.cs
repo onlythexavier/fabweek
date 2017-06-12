@@ -2,7 +2,7 @@ using System;
 
 namespace ISEN.DotNet.Library.Models
 {
-    public abstract class Owner : BaseEntity
+    public class Owner : BaseEntity
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
