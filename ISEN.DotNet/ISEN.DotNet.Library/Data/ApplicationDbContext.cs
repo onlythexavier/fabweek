@@ -12,6 +12,8 @@ namespace ISEN.DotNet.Library.Data
     {
         // Ajouter les DbSets<> ici
         public DbSet<Equipment> EquipmentCollection { get; set; }
+        public DbSet<Owner> OwnerCollection { get; set; }
+        public DbSet<Statement> StatementCollection { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
@@ -29,6 +31,11 @@ namespace ISEN.DotNet.Library.Data
             // ...
             builder.Entity<Equipment>()
                 .ToTable("Equipment");
+            builder.Entity<Owner>()
+                .ToTable("Owner");
+
+            builder.Entity<Owner>()
+                .ToTable("Statement");
         }
     }
 
