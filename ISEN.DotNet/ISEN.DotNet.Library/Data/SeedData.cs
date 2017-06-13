@@ -35,7 +35,7 @@ namespace ISEN.DotNet.Library.Data
             _logger.LogWarning($"Database was {deletedString}");
 
             var created = _context.Database.EnsureCreated();
-            var createdString = deleted ? "created" : "not created";
+            var createdString = created ? "created" : "not created";
             _logger.LogWarning($"Database was {createdString}");
         }   
         public void AddOwner()
@@ -50,7 +50,7 @@ namespace ISEN.DotNet.Library.Data
             if(c2 == null){
                 _logger.LogWarning("c2 is null");
             }
-            _logger.LogWarning(c1.GetType().ToString());
+            _logger.LogWarning(c1.ToString());
             _logger.LogWarning(c2.Id.ToString());
 
             _logger.LogWarning("Ajout des owner");
@@ -106,7 +106,7 @@ namespace ISEN.DotNet.Library.Data
             if (_equipmentRepository.GetAll().Any()) return;
 
             
-            _logger.LogWarning("Ajout des equipment");
+            _logger.LogWarning("Ajout des equipments");
 #region 2 equipment random
             var e1 = new Equipment()
             {
@@ -121,7 +121,8 @@ namespace ISEN.DotNet.Library.Data
                 Type = "SolarPanel"
             };
 #endregion
-
+_logger.LogWarning(e1.ToString());
+            _logger.LogWarning(e2.Type.ToString());
             _equipmentRepository.UpdateRange(e1, e2);
             _equipmentRepository.Save();
 

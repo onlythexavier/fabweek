@@ -22,7 +22,8 @@ namespace ISEN.DotNet.Library.Repositories.Implementations
 
         public override IQueryable<Owner> EntityCollection
             => Context.OwnerCollection.AsQueryable();
-            public override IQueryable<Owner> Includes(IQueryable<Owner> queryable)
+
+        public override IQueryable<Owner> Includes(IQueryable<Owner> queryable)
         {
             queryable = base.Includes(queryable);
             queryable = queryable.Include(e => e.Equipment);

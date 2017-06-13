@@ -34,7 +34,7 @@ namespace ISEN.DotNet.Library.Data
             builder.Entity<Owner>()
                 .ToTable("Owner");
 
-            builder.Entity<Owner>()
+            builder.Entity<Statement>()
                 .ToTable("Statement");
         }
     }

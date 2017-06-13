@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using ISEN.DotNet.Library.Repositories.Implementations;
 
 namespace ISEN.DotNet.Web
 {
@@ -41,6 +42,9 @@ namespace ISEN.DotNet.Web
 
             // Ajouter la définition des injections de services et repositories
             //services.AddScoped<IRepository, Repository>();
+            services.AddScoped<IOwnerRepository, OwnerRepository>();
+            services.AddScoped<IEquipmentRepository, EquipmentRepository>();
+            services.AddScoped<IStatementRepository, StatementRepository>();
 
             // service de génération de données de test
             services.AddScoped<SeedData>();
@@ -74,6 +78,9 @@ namespace ISEN.DotNet.Web
             // SeedData
             var seedService = app.ApplicationServices.GetService<SeedData>();
             seedService.DropCreateDatabase();
+            seedService.AddEquipment();
+            seedService.AddOwner();
+            seedService.AddStatement();
         }
     }
 }
