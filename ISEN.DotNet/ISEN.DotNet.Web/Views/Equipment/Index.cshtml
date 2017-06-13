@@ -12,32 +12,29 @@
             <thead>
                 <tr>
                     <th>
-                        Heure
+                        ID
                     </th>
                     <th>
-                        Production
+                        Name
                     </th>
                     <th>
-                        Consommation
+                        Max Production
                     </th>
                     <th>
-                        Equipement
+                        Type
                     </th>
                 </tr>
             </thead>
             <tbody>
-            @foreach (var equipment in Model)
-            {
-                foreach (var statement in equipment.StatementCollection)
-                 {
+                @foreach (var equipment in Model)
+                {
                     <tr>
-                     <td>@statement.Date</td>
-                     <td>@statement.Production</td>
-                     <td>@statement.Consommation</td>
-                     <td>@statement.Equipment</td>
+                        <td>@equipment.Id</td>
+                        <td>@equipment.Name</td>
+                        <td>@equipment.MaxProduction</td>
+                        <td>@equipment.Type</td>
                     </tr>
-                 }
-            }
+                }
             </tbody>
         </table>
     </div>

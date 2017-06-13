@@ -1,5 +1,4 @@
-﻿@using ISEN.DotNet.Library.Repositories.Interfaces
-@model IEnumerable<ISEN.DotNet.Library.Models.Statement>
+﻿@model IEnumerable<ISEN.DotNet.Library.Models.Statement>
 
 @{
     ViewBag.Title = "Statement";
@@ -13,31 +12,29 @@
             <thead>
             <tr>
                 <th>
-                    Heure
+                    Hour
                 </th>
                 <th>
                     Production
                 </th>
                 <th>
-                    Consommation
+                    Consumtion
                 </th>
                 <th>
-                    Equipement
+                    Equipment
                 </th>
             </tr>
             </thead>
             <tbody>
-               
-                    @foreach (var statement in Model)
-                    {
-                        <tr>
+                @foreach (var statement in Model)
+                {
+                    <tr>
                         <td>@statement.Date</td>
                         <td>@statement.Production</td>
                         <td>@statement.Consommation</td>
                         <td>@statement.Equipment</td>
                     </tr>
-                    }
-                
+                }
             </tbody>
         </table>
     </div>

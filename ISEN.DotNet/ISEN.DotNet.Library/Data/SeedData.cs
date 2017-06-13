@@ -42,14 +42,7 @@ namespace ISEN.DotNet.Library.Data
         {
             if (_ownerRepository.GetAll().Any()) return;
 
-            var c1 = _equipmentRepository.Single(p => p.Id == 1);
-            var c2 = _equipmentRepository.Single(p => p.Id == 2);
-            if(c1 == null){
-                _logger.LogWarning("c1 is null");
-            }
-            if(c2 == null){
-                _logger.LogWarning("c2 is null");
-            }
+            
 
             _logger.LogWarning("Ajout des owner");
 
@@ -59,8 +52,7 @@ namespace ISEN.DotNet.Library.Data
                 LastName = "DUPONT",
                 FirstName = "Xavier",
                 City = "Toulon",
-                Country = "France",
-                Equipment = (Equipment)c1
+                Country = "France"
             };    
             var p2 = new Owner()
             {
@@ -74,8 +66,7 @@ namespace ISEN.DotNet.Library.Data
                 LastName = "MAROUN",
                 FirstName = "Marc",
                 City = "Marseille",
-                Country = "France",
-                Equipment = (Equipment)c2
+                Country = "France"
             };
             var p4 = new Owner()
             {
@@ -102,22 +93,33 @@ namespace ISEN.DotNet.Library.Data
         public void AddEquipment()
         {
             if (_equipmentRepository.GetAll().Any()) return;
+            var o1 = _ownerRepository.Single(p => p.Id == 1);
+            var o2 = _ownerRepository.Single(p => p.Id == 2);
+            if (o1 == null)
+            {
+                _logger.LogWarning("o1 is null");
+            }
+            if (o2 == null)
+            {
+                _logger.LogWarning("o2 is null");
+            }
 
-            
             _logger.LogWarning("Ajout des equipments");
 #region 2 equipment random
             var e1 = new Equipment()
             {
                 MaxProduction = 630,
-                Type = "WindTurbine"
+                Type = "WindTurbine",
+                Owner = o1
             };    
             var e2 = new Equipment()
             {
                 MaxProduction = 430,
-                Type = "SolarPanel"
+                Type = "SolarPanel",
+                Owner = o2
             };
 #endregion
-_logger.LogWarning(e1.ToString());
+            _logger.LogWarning(e1.ToString());
             _logger.LogWarning(e2.Type.ToString());
             _equipmentRepository.UpdateRange(e1, e2);
             _equipmentRepository.Save();

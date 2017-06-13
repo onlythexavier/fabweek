@@ -1,0 +1,37 @@
+﻿@model System.Collections.Generic.IEnumerable<ISEN.DotNet.Library.Models.Owner>
+
+@{
+    ViewBag.Title = "Owners";
+    Layout = "_Layout";
+}
+
+<h2>Owners</h2>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    Names
+                </th>
+                <th>
+                    Location
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var owner in Model)
+            {
+                <tr>
+                    <td>@owner.Id</td>
+                    <td>@owner.Display</td>
+                    <td>@owner.Location</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>
