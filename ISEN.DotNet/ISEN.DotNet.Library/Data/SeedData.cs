@@ -50,8 +50,6 @@ namespace ISEN.DotNet.Library.Data
             if(c2 == null){
                 _logger.LogWarning("c2 is null");
             }
-            _logger.LogWarning(c1.ToString());
-            _logger.LogWarning(c2.Id.ToString());
 
             _logger.LogWarning("Ajout des owner");
 
@@ -110,13 +108,11 @@ namespace ISEN.DotNet.Library.Data
 #region 2 equipment random
             var e1 = new Equipment()
             {
-                Id = 1,
                 MaxProduction = 630,
                 Type = "WindTurbine"
             };    
             var e2 = new Equipment()
             {
-                Id = 2,
                 MaxProduction = 430,
                 Type = "SolarPanel"
             };
