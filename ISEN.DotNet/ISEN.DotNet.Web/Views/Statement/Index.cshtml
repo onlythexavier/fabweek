@@ -1,0 +1,44 @@
+﻿@using ISEN.DotNet.Library.Repositories.Interfaces
+@model IEnumerable<ISEN.DotNet.Library.Models.Statement>
+
+@{
+    ViewBag.Title = "Statement";
+    Layout = "_Layout";
+}
+<h2>Statement</h2>
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>
+                    Heure
+                </th>
+                <th>
+                    Production
+                </th>
+                <th>
+                    Consommation
+                </th>
+                <th>
+                    Equipement
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+               
+                    @foreach (var statement in Model)
+                    {
+                        <tr>
+                        <td>@statement.Date</td>
+                        <td>@statement.Production</td>
+                        <td>@statement.Consommation</td>
+                        <td>@statement.Equipment</td>
+                    </tr>
+                    }
+                
+            </tbody>
+        </table>
+    </div>
+</div>

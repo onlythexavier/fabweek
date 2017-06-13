@@ -1,0 +1,44 @@
+﻿@model System.Collections.Generic.IEnumerable<ISEN.DotNet.Library.Models.Equipment>
+
+@{
+    ViewBag.Title = "Equipments";
+    Layout = "_Layout";
+}
+
+<h2>My Equipments</h2>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Heure
+                    </th>
+                    <th>
+                        Production
+                    </th>
+                    <th>
+                        Consommation
+                    </th>
+                    <th>
+                        Equipement
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var equipment in Model)
+            {
+                foreach (var statement in equipment.StatementCollection)
+                 {
+                    <tr>
+                     <td>@statement.Date</td>
+                     <td>@statement.Production</td>
+                     <td>@statement.Consommation</td>
+                     <td>@statement.Equipment</td>
+                    </tr>
+                 }
+            }
+            </tbody>
+        </table>
+    </div>
+</div>
