@@ -1,4 +1,5 @@
-﻿using ISEN.DotNet.Library.Models;
+﻿using System.Collections.Generic;
+using ISEN.DotNet.Library.Models;
 
 namespace ISEN.DotNet.Library.Repositories.Interfaces
 {

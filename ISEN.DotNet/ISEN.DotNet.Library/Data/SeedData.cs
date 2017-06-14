@@ -29,7 +29,7 @@ namespace ISEN.DotNet.Library.Data
         }
 
         public void DropCreateDatabase()
-        {           
+        {
             var deleted = _context.Database.EnsureDeleted();
             var deletedString = deleted ? "dropped" : "not dropped";
             _logger.LogWarning($"Database was {deletedString}");
@@ -37,52 +37,67 @@ namespace ISEN.DotNet.Library.Data
             var created = _context.Database.EnsureCreated();
             var createdString = created ? "created" : "not created";
             _logger.LogWarning($"Database was {createdString}");
-        }   
+        }
         public void AddOwner()
         {
             if (_ownerRepository.GetAll().Any()) return;
 
-            
+
 
             _logger.LogWarning("Ajout des owner");
 
-#region 5 owner random
+            #region 5 owner random
             var p1 = new Owner()
             {
                 LastName = "DUPONT",
                 FirstName = "Xavier",
                 City = "Toulon",
-                Country = "France"
-            };    
+                Country = "France",
+                Username = "xdupont",
+                Password = "dupont",
+                Email = "xavier.dupont@isen.fr"
+            };
             var p2 = new Owner()
             {
                 LastName = "MALLAT DESMORTIERS",
                 FirstName = "Xavier",
                 City = "Marseille",
-                Country = "France"
+                Country = "France",
+                Username = "xmallat",
+                Password = "mallat",
+                Email = "xavier.mallat@isen.fr"
             };
             var p3 = new Owner()
             {
                 LastName = "MAROUN",
                 FirstName = "Marc",
                 City = "Marseille",
-                Country = "France"
+                Country = "France",
+                Username = "mmaroun",
+                Password = "maroun",
+                Email = "marc.maroun@isen.fr"
             };
             var p4 = new Owner()
             {
                 LastName = "HIVERT",
                 FirstName = "Thomas",
                 City = "La Seyne-sur-Mer",
-                Country = "France"
+                Country = "France",
+                Username = "thivert",
+                Password = "hivert",
+                Email = "thomas.hivert@isen.fr"
             };
             var p5 = new Owner()
             {
                 LastName = "BOTTEMER",
                 FirstName = "Alexis",
                 City = "Toulon",
-                Country = "France"
+                Country = "France",
+                Username = "abottemer",
+                Password = "bottemer",
+                Email = "alexis.bottemer@isen.fr"
             };
-#endregion
+            #endregion
 
             _ownerRepository.UpdateRange(p1, p2, p3, p4, p5);
             _ownerRepository.Save();
@@ -105,20 +120,20 @@ namespace ISEN.DotNet.Library.Data
             }
 
             _logger.LogWarning("Ajout des equipments");
-#region 2 equipment random
+            #region 2 equipment random
             var e1 = new Equipment()
             {
                 MaxProduction = 630,
                 Type = "WindTurbine",
                 Owner = o1
-            };    
+            };
             var e2 = new Equipment()
             {
                 MaxProduction = 430,
                 Type = "SolarPanel",
                 Owner = o2
             };
-#endregion
+            #endregion
             _logger.LogWarning(e1.ToString());
             _logger.LogWarning(e2.Type.ToString());
             _equipmentRepository.UpdateRange(e1, e2);
@@ -129,25 +144,27 @@ namespace ISEN.DotNet.Library.Data
 
         public void AddStatement()
         {
-               if (_statementRepository.GetAll().Any()) return;
+            if (_statementRepository.GetAll().Any()) return;
 
-               var t1 = _equipmentRepository.Single(p => p.Id == 1);
-               var t2 = _equipmentRepository.Single(p => p.Id == 2);
+            var t1 = _equipmentRepository.Single(p => p.Id == 1);
+            var t2 = _equipmentRepository.Single(p => p.Id == 2);
 
             _logger.LogWarning("Ajout des reservations");
 
-#region 2 statement random
-            var r1 = new Statement(){
+            #region 2 statement random
+            var r1 = new Statement()
+            {
                 Equipment = (Equipment)t1,
                 Production = 400,
                 Consommation = 300
             };
-            var r2 = new Statement(){
+            var r2 = new Statement()
+            {
                 Equipment = (Equipment)t2,
                 Production = 200,
                 Consommation = 100
             };
-#endregion
+            #endregion
             _statementRepository.UpdateRange(r1, r2);
             _statementRepository.Save();
 

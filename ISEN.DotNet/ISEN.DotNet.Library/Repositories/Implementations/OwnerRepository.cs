@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -12,7 +13,7 @@ using Microsoft.Extensions.Logging;
 namespace ISEN.DotNet.Library.Repositories.Implementations
 {
     public class OwnerRepository : BaseContextRepository<Owner>, IOwnerRepository
-    {        
+    {
         public OwnerRepository(
             ILogger<OwnerRepository> logger,
             ApplicationDbContext context) : base(logger, context)
@@ -23,11 +24,7 @@ namespace ISEN.DotNet.Library.Repositories.Implementations
         public override IQueryable<Owner> EntityCollection
             => Context.OwnerCollection.AsQueryable();
 
-        public override IQueryable<Owner> Includes(IQueryable<Owner> queryable)
-        {
-            queryable = base.Includes(queryable);
-            queryable = queryable.Include(e => e.Equipment);
-            return queryable;
-        }
+        public IEnumerable<Owner> GetAll(int id) 
+            => EntityCollection.Where(p => p.Id == id);
     }
 }

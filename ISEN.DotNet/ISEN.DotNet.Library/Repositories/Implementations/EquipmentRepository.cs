@@ -20,6 +20,13 @@ namespace ISEN.DotNet.Library.Repositories.Implementations
             Logger.LogWarning("EquipmentRepository was newed");
         }
 
+        public override IQueryable<Equipment> Includes(IQueryable<Equipment> queryable)
+        {
+            queryable = base.Includes(queryable)
+                .Include(e => e.Owner);
+            return queryable;
+        }
+
         public override IQueryable<Equipment> EntityCollection
             => Context.EquipmentCollection.AsQueryable();
     }

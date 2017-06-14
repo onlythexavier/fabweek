@@ -10,27 +10,31 @@
     <div class="col-md-12">
         <table class="table table-striped">
             <thead>
-            <tr>
-                <th>
-                    ID
-                </th>
-                <th>
-                    Names
-                </th>
-                <th>
-                    Location
-                </th>
-            </tr>
+                <tr>
+                    <th>
+                        ID
+                    </th>
+                    <th>
+                        Names
+                    </th>
+                    <th>
+                        Location
+                    </th>
+                    <th>
+                        Action
+                    </th>
+                </tr>
             </thead>
             <tbody>
-            @foreach (var owner in Model)
+                @foreach (var owner in Model)
             {
-                <tr>
-                    <td>@owner.Id</td>
-                    <td>@owner.Display</td>
-                    <td>@owner.Location</td>
-                </tr>
-            }
+                    <tr>
+                        <td>@owner.Id</td>
+                        <td>@owner.Display</td>
+                        <td>@owner.Location</td>
+                        <td><a asp-controller="Owner" asp-action="Detail" asp-route-id="@owner.Id">Detail</a></td>
+                    </tr>
+                }
             </tbody>
         </table>
     </div>

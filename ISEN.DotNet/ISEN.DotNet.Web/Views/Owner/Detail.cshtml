@@ -1,0 +1,43 @@
+﻿@using ISEN.DotNet.Library.Models
+@using ISEN.DotNet.Library.Repositories.Interfaces
+
+
+@{
+    ViewBag.Title = "Owners";
+    Layout = "_Layout";
+    
+}
+@inject IEquipmentRepository EquipmentRepository
+@model ISEN.DotNet.Library.Models.Owner
+<h2>Owners</h2>
+<div class="row">
+    <div class="col-md-12">
+        <h3>@Model.Display</h3>
+        <h4>Equipment : </h4>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    Type
+                </th>
+                <th>
+                    Max Production
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var equipment in EquipmentRepository.Find(p => p.Id == Model.Id))
+            {
+                <tr>
+                    <td>@equipment.Id</td>
+                    <td>@equipment.Type</td>
+                    <td>@equipment.MaxProduction</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>
