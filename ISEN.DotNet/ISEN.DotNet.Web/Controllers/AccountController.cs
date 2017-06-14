@@ -9,6 +9,7 @@ using Microsoft.Extensions.Options;
 using ISEN.DotNet.Library.Data;
 using ISEN.DotNet.Library.Models;
 using ISEN.DotNet.Library.Models.AccountViewModels;
+using ISEN.DotNet.Library.Repositories.Interfaces;
 
 namespace ISEN.DotNet.Web.Controllers
 {
@@ -21,18 +22,21 @@ namespace ISEN.DotNet.Web.Controllers
         private readonly RoleManager<AccountRole> _roleManager;
         private readonly ILogger _logger;
         private readonly string _externalCookieScheme;
+        private readonly IOwnerRepository _ownerRepository;
 
         public AccountController(
             ApplicationDbContext context,
             UserManager<AccountUser> userManager,
             SignInManager<AccountUser> signInManager,
-            IOptions<IdentityCookieOptions> identityCookieOptions,           
+            IOptions<IdentityCookieOptions> identityCookieOptions,  
+            IOwnerRepository ownerRepository,
             ILoggerFactory loggerFactory, RoleManager<AccountRole> roleManager)
         {
             _context = context;
             _userManager = userManager;
             _signInManager = signInManager;
             _roleManager = roleManager;
+            _ownerRepository = ownerRepository;
             _externalCookieScheme = identityCookieOptions.Value.ExternalCookieAuthenticationScheme;
             _logger = loggerFactory.CreateLogger<AccountController>();
         }
@@ -80,24 +84,36 @@ namespace ISEN.DotNet.Web.Controllers
             return View(model);
         }
 
+        [AllowAnonymous]
         public IActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> Create(RegisterViewModel model, string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
-                var user = new AccountUser {UserName = model.Email, Email = model.Email};
+                var user = new AccountUser {UserName = model.UserName, Email = model.Email};
+                var owner = new Owner
+                {
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    City = model.City,
+                    Country = model.Country,
+                    Account = user
+                };
                 var result = await _userManager.CreateAsync(user, model.Password);
+                _ownerRepository.Update(owner);
+                _ownerRepository.Save();
                 if (result.Succeeded)
                 {
                     await _userManager.AddToRoleAsync(user, "User");
                     _logger.LogInformation(3, "User created a new account with password.");
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index", "Home");
                 }
             }
             return View(model);
@@ -120,6 +136,14 @@ namespace ISEN.DotNet.Web.Controllers
         public IActionResult AccessDenied()
         {
             return View();
+        }
+
+        public virtual IActionResult Detail(int? id)
+        {
+            if (id == null) return View();
+            var model = _context.AccountUserCollection.Single(p => p.Id == id);
+            _logger.LogWarning(model.UserName);
+            return View(model);
         }
 
         #region Helpers

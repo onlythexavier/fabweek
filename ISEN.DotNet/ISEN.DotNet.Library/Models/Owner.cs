@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace ISEN.DotNet.Library.Models
 {
@@ -8,11 +9,18 @@ namespace ISEN.DotNet.Library.Models
         public string LastName { get; set; }
         public string City { get; set; }
         public string Country { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
-        public string Email { get; set; }
+        public int? AccountId { get; set; }
+        public AccountUser Account { get; set; }
         public override string Display => $"{FirstName} {LastName}";
         public string Location => $"{City}, {Country.ToUpper()}";
         public override string ToString() => $"Nom={FirstName}|{LastName}";
+
+        public List<Equipment> EquipmentCollection { get; set; } = new List<Equipment>();
+
+        public void AddEquipment(Equipment equipment)
+        {
+            EquipmentCollection.Add(equipment);
+            equipment.Owner = this;
+        }
     }
 }

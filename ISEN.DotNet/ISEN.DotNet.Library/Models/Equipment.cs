@@ -10,5 +10,11 @@ namespace ISEN.DotNet.Library.Models
         public string Type { get; set;}
         public int MaxProduction { get; set; }
         public List<Statement> StatementCollection = new List<Statement>();
+
+        public void AddStatement(Statement statement)
+        {
+            StatementCollection.Add(statement);
+            statement.Equipment = this;
+        }
     }
 }

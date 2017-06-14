@@ -7,32 +7,33 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">my<strong>Web</strong>App☺</a>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand"><strong>Green</strong>Label</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Owner" asp-action="Index">Owners</a></li>
-                    <li><a asp-area="" asp-controller="Equipment" asp-action="Index">Equipments</a></li>
-                    <li><a asp-area="" asp-controller="Statement" asp-action="Index">Statements</a></li>
                     @if (User.Identity.IsAuthenticated)
-                {
-                    @if (User.IsInRole("Admin"))
-                     {
-                         <li>
-                             <a asp-controller="Account" asp-action="Index">Users</a>
-                         </li>
-                     }
-                    <li>
-                        <a asp-controller="Account" asp-action="Logout">Logout</a>
-                    </li>
-                }
-                else
-                {
-                    <li>
-                        <a asp-controller="Account" asp-action="Login">Login</a>
-                    </li>
-                }
+                    {
+                        @if (User.IsInRole("Admin"))
+                         {
+                             <li><a asp-controller="Owner" asp-action="Index">Owners</a></li>
+                             <li><a asp-controller="Equipment" asp-action="Index">Equipments</a></li>
+                             <li><a asp-controller="Statement" asp-action="Index">Statements</a></li>
+                             <li><a asp-controller="Account" asp-action="Index">Users</a></li>
+                        }
+                        else
+                        {
+                            <li><a asp-controller="Owner" asp-action="Detail" asp-route-id="@User.Identity.Name">Owners</a></li>
+                            <li><a asp-controller="Equipment" asp-action="Index">Equipments</a></li>
+                            <li><a asp-controller="Statement" asp-action="Index">Statements</a></li>
+                        }
+                        <li><a asp-controller="Account" asp-action="Logout">Logout</a></li>
+                    }
+                    else
+                    {
+                        <li><a asp-controller="Account" asp-action="Create">Sign In</a></li>
+                        <li><a asp-controller="Account" asp-action="Login">Login</a></li>
+                    }
                 </ul>
             </div>
         </div>
