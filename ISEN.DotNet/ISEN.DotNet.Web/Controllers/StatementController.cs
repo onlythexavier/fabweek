@@ -1,5 +1,6 @@
 using ISEN.DotNet.Library.Models;
 using ISEN.DotNet.Library.Repositories.Interfaces;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -7,14 +8,8 @@ namespace ISEN.DotNet.Web.Controllers
 {
     public class StatementController : BaseController<IStatementRepository, Statement>
     {
-        public StatementController(IStatementRepository repository, ILogger<BaseController<IStatementRepository, Statement>> logger) : base(repository, logger)
+        public StatementController(IStatementRepository repository, ILogger<BaseController<IStatementRepository, Statement>> logger, UserManager<AccountUser> userManager) : base(repository, logger, userManager)
         {
-        }
-
-        public override IActionResult Index()
-        {
-            var model = Repository.GetAll();
-            return View(model);
         }
     }
 }

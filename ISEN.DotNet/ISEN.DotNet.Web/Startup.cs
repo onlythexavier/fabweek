@@ -1,16 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using ISEN.DotNet.Library.Repositories.Interfaces;
-using ISEN.DotNet.Library.Data;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using ISEN.DotNet.Library.Repositories.Interfaces;
+using ISEN.DotNet.Library.Data;
 using ISEN.DotNet.Library.Repositories.Implementations;
+using ISEN.DotNet.Library.Models;
 
 namespace ISEN.DotNet.Web
 {
@@ -37,6 +38,13 @@ namespace ISEN.DotNet.Web
                 options.UseSqlite(
                     Configuration.GetConnectionString("DefaultConnection")));
 
+            services.AddEntityFrameworkSqlite()
+                .AddDbContext<ApplicationDbContext>();
+
+            services.AddIdentity<AccountUser, AccountRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext, int>()
+                .AddDefaultTokenProviders();
+
             // Add framework services.
             services.AddMvc();
 
@@ -48,6 +56,28 @@ namespace ISEN.DotNet.Web
 
             // service de génération de données de test
             services.AddScoped<SeedData>();
+
+            services.Configure<IdentityOptions>(options =>
+            {
+                // Password settings
+                options.Password.RequireDigit = false;
+                options.Password.RequiredLength = 6;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireLowercase = false;
+
+                // Lockout settings
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
+                options.Lockout.MaxFailedAccessAttempts = 10;
+
+                // Cookie settings
+                options.Cookies.ApplicationCookie.ExpireTimeSpan = TimeSpan.FromDays(150);
+                options.Cookies.ApplicationCookie.LoginPath = "/Account/Login";
+                options.Cookies.ApplicationCookie.LogoutPath = "/Account/Logout";
+
+                // User settings
+                options.User.RequireUniqueEmail = true;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,6 +89,7 @@ namespace ISEN.DotNet.Web
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                //app.UseDatabaseErrorPage();
                 app.UseBrowserLink();
             }
             else
@@ -67,6 +98,8 @@ namespace ISEN.DotNet.Web
             }
 
             app.UseStaticFiles();
+
+            app.UseIdentity();
 
             app.UseMvc(routes =>
             {
@@ -81,6 +114,8 @@ namespace ISEN.DotNet.Web
             seedService.AddEquipment();
             seedService.AddOwner();
             seedService.AddStatement();
+            
+            seedService.AddAdminAndRole();
         }
     }
 }

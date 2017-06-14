@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ISEN.DotNet.Library.Repositories.Interfaces;
 using ISEN.DotNet.Library.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 
 namespace ISEN.DotNet.Web.Controllers
@@ -11,13 +12,16 @@ namespace ISEN.DotNet.Web.Controllers
     {
         protected readonly ILogger<BaseController<IRepo, T>> Logger; 
         protected readonly IRepo Repository;
+        protected readonly UserManager<AccountUser> UserManager;
 
         public BaseController(
             IRepo repository,
-            ILogger<BaseController<IRepo, T>> logger)
+            ILogger<BaseController<IRepo, T>> logger,
+            UserManager<AccountUser> userManager)
         {
             Repository = repository;
             Logger = logger;
+            UserManager = userManager;
         }
 
         [HttpGet]

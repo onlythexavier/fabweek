@@ -5,19 +5,26 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using ISEN.DotNet.Library.Models;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace ISEN.DotNet.Library.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext<AccountUser, AccountRole, int>
     {
         // Ajouter les DbSets<> ici
         public DbSet<Equipment> EquipmentCollection { get; set; }
         public DbSet<Owner> OwnerCollection { get; set; }
         public DbSet<Statement> StatementCollection { get; set; }
+        public DbSet<AccountUser> AccountUserCollection { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
+            Database.EnsureCreated();
+        }
+         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlite("DataSource=.\\MyWebApp.db");
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
