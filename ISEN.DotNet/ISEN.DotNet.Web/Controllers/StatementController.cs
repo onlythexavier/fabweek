@@ -11,5 +11,12 @@ namespace ISEN.DotNet.Web.Controllers
         public StatementController(IStatementRepository repository, ILogger<BaseController<IStatementRepository, Statement>> logger, UserManager<AccountUser> userManager) : base(repository, logger, userManager)
         {
         }
+
+        public IActionResult Info()
+        {
+            var accountUserId = ViewData["Id"] = UserManager.GetUserId(User);
+            var userOwner = Repository.Find(p => p.Equipment.Owner.Account.Id == (int)accountUserId);
+            return View(userOwner);
+        }
     }
 }

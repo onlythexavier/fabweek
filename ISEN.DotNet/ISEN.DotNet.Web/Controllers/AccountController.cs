@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
@@ -19,7 +18,6 @@ namespace ISEN.DotNet.Web.Controllers
         private readonly ApplicationDbContext _context;
         private readonly UserManager<AccountUser> _userManager;
         private readonly SignInManager<AccountUser> _signInManager;
-        private readonly RoleManager<AccountRole> _roleManager;
         private readonly ILogger _logger;
         private readonly string _externalCookieScheme;
         private readonly IOwnerRepository _ownerRepository;
@@ -35,7 +33,6 @@ namespace ISEN.DotNet.Web.Controllers
             _context = context;
             _userManager = userManager;
             _signInManager = signInManager;
-            _roleManager = roleManager;
             _ownerRepository = ownerRepository;
             _externalCookieScheme = identityCookieOptions.Value.ExternalCookieAuthenticationScheme;
             _logger = loggerFactory.CreateLogger<AccountController>();
