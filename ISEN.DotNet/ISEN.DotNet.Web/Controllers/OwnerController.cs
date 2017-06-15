@@ -23,5 +23,12 @@ namespace ISEN.DotNet.Web.Controllers
             var userOwner = Repository.Single(p => p.Account.Id == (int)accountUserId);
             return View(userOwner);
         }
+
+        public IActionResult MyStatement()
+        {
+            var accountUserId = ViewData["Id"] = UserManager.GetUserId(User);
+            var userOwner = Repository.Single(p => p.Account.Id == (int)accountUserId);
+            return View(userOwner);
+        }
     }
 }

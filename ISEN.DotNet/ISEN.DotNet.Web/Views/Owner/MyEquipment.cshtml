@@ -2,45 +2,46 @@
 @{
     ViewBag.Title = "My Equipment";
     Layout = "_Layout";
-
 }
 @model ISEN.DotNet.Library.Models.Owner
-@inject IEquipmentRepository equipmentRepository
+@inject IEquipmentRepository EquipmentRepository
 
 <h2>@Model.Display</h2>
 <div class="row">
     <div class="col-md-12">
         <h3>Equipment : </h3>
         <p>
-            <a asp-controller="Equipment" asp-action="Enrole">Create New</a>
+            <a asp-controller="Equipment" asp-action="Enrole" class="btn btn-primary">Create New</a>
         </p>
         <table class="table table-striped">
             <thead>
-                <tr>
-                    <th>
-                        ID
-                    </th>
-                    <th>
-                        Type
-                    </th>
-                    <th>
-                        Max Production
-                    </th>
-                    <th>
-                        Action
-                    </th>
-                </tr>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    Type
+                </th>
+                <th>
+                    Max Production
+                </th>
+                <th>
+                    Action
+                </th>
+            </tr>
             </thead>
             <tbody>
-                @foreach (var equipment in equipmentRepository.Find(p => p.Owner == Model))
+            @foreach (var equipment in EquipmentRepository.Find(p => p.Owner == Model))
             {
-                    <tr>
-                        <td>@equipment.Id</td>
-                        <td>@equipment.Type</td>
-                        <td>@equipment.MaxProduction</td>
-                        <td><a asp-controller="Equipment" asp-action="Detail" asp-route-id="@equipment.Id">Details</a></td>
-                    </tr>
-                }
+                <tr>
+                    <td>@equipment.Id</td>
+                    <td>@equipment.Type</td>
+                    <td>@equipment.MaxProduction</td>
+                    <td>
+                        <a asp-controller="Equipment" asp-action="Detail" asp-route-id="@equipment.Id">Details</a>
+                    </td>
+                </tr>
+            }
             </tbody>
         </table>
     </div>

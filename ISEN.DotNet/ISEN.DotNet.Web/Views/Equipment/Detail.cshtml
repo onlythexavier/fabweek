@@ -6,10 +6,9 @@
 }
 @inject IStatementRepository StatementRepository
 @model ISEN.DotNet.Library.Models.Equipment
-<h2>@Model.Display</h2>
+<h2>Equipment : <strong>@Model.Display</strong></h2>
 <div class="row">
     <div class="col-md-12">
-        <h3>Equipment : </h3>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -20,7 +19,7 @@
                         Consommation
                     </th>
                     <th>
-                        Production
+                        Production / Maximum Production
                     </th>
                 </tr>
             </thead>
@@ -30,7 +29,7 @@
                     <tr>
                         <td>@statement.Date</td>
                         <td>@statement.Consommation</td>
-                        <td>@statement.Production</td>
+                        <td>@statement.Production / @statement.Equipment.MaxProduction</td>
                     </tr>
                 }
             </tbody>

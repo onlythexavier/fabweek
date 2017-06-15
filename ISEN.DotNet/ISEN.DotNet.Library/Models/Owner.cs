@@ -11,9 +11,9 @@ namespace ISEN.DotNet.Library.Models
         public string Country { get; set; }
         public int? AccountId { get; set; }
         public AccountUser Account { get; set; }
-        public override string Display => $"{FirstName} {LastName}";
+        public override string Display => $"{FirstName} {LastName.ToUpper()}";
         public string Location => $"{City}, {Country.ToUpper()}";
-        public override string ToString() => $"Nom={FirstName}|{LastName}";
+        public override string ToString() => $"{FirstName} {LastName.ToUpper()}";
 
         public List<Equipment> EquipmentCollection { get; set; } = new List<Equipment>();
 

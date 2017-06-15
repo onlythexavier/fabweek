@@ -1,0 +1,43 @@
+﻿@using ISEN.DotNet.Library.Repositories.Interfaces
+@{
+    ViewBag.Title = "My Statement";
+    Layout = "_Layout";
+}
+@model ISEN.DotNet.Library.Models.Owner
+@inject IStatementRepository StatementRepository
+
+<h2>@Model.Display</h2>
+<div class="row">
+    <div class="col-md-12">
+        <h3>My Statement :</h3>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>
+                    Date
+                </th>
+                <th>
+                    Consommation
+                </th>
+                <th>
+                    Production
+                </th>
+                <th>
+                    Equipment
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var statement in StatementRepository.Find(p => p.Equipment.Owner == Model))
+            {
+                <tr>
+                    <td>@statement.Date</td>
+                    <td>@statement.Consommation</td>
+                    <td>@statement.Production</td>
+                    <td>@statement.Equipment.Name</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>
