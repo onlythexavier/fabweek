@@ -13,8 +13,15 @@ namespace ISEN.DotNet.Web.Controllers
 {
     public class OwnerController : BaseController<IOwnerRepository, Owner>
     {
-        public OwnerController(IOwnerRepository repository, ILogger<BaseController<IOwnerRepository, Owner>> logger, UserManager<AccountUser> userManager) : base(repository, logger, userManager)
+        public OwnerController(IOwnerRepository repository, ILogger<BaseController<IOwnerRepository, Owner>> logger, UserManager<AccountUser> userManager, IOwnerRepository ownerRepository) : base(repository, logger, userManager)
         {
+        }
+
+        public IActionResult MyEquipment()
+        {
+            var accountUserId = ViewData["Id"] = UserManager.GetUserId(User);
+            var userOwner = Repository.Single(p => p.Account.Id == (int)accountUserId);
+            return View(userOwner);
         }
     }
 }
