@@ -5,36 +5,43 @@
     Layout = "_Layout";
 }
 
-<h2>My Equipments</h2>
+<h2>Equipments</h2>
 <div class="row">
     <div class="col-md-12">
+        <p>
+            <a asp-action="Create">Create New</a>
+        </p>
         <table class="table table-striped">
             <thead>
-                <tr>
-                    <th>
-                        ID
-                    </th>
-                    <th>
-                        Name
-                    </th>
-                    <th>
-                        Max Production
-                    </th>
-                    <th>
-                        Type
-                    </th>
-                </tr>
+            <tr>
+                <th>
+                    Owner
+                </th>
+                <th>
+                    IdObject
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Max Production
+                </th>
+                <th>
+                    Type
+                </th>
+            </tr>
             </thead>
             <tbody>
-                @foreach (var equipment in Model)
-                {
-                    <tr>
-                        <td>@equipment.Id</td>
-                        <td>@equipment.Name</td>
-                        <td>@equipment.MaxProduction</td>
-                        <td>@equipment.Type</td>
-                    </tr>
-                }
+            @foreach (var equipment in Model)
+            {
+                <tr>
+                    <td>@equipment.Owner</td>
+                    <td>@equipment.IdObject</td>
+                    <td>@equipment.Name</td>
+                    <td>@equipment.MaxProduction</td>
+                    <td>@equipment.Type</td>
+                </tr>
+            }
             </tbody>
         </table>
     </div>

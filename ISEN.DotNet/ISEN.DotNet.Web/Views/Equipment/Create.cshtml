@@ -1,0 +1,30 @@
+﻿@using ISEN.DotNet.Library.Repositories.Interfaces
+@model ISEN.DotNet.Library.Models.Equipment
+
+@{
+    ViewBag.Title = "Create Equipment";
+    Layout = "_Layout";
+    var id = Guid.NewGuid().ToString();
+}
+@inject IEquipmentRepository equipmentRepository
+
+<h2>New Equipment</h2>
+<form class="form-horizontal" asp-action="Create">
+    <label asp-for="Type" class="control-label">Type</label>
+    <select class="form-control" asp-for="Type">
+        <option>Select</option>
+        <option value="SolarPanel">SolarPanel</option>
+        <option value="WindTurbine">WindTurbine</option>
+    </select>
+    <input type="hidden" asp-for="IdObject" value="@id"/>
+    <label asp-for="MaxProduction" class="control-label">Maximum Production</label>
+    <input type="number" class="form-control"
+           id="MaxProduction"
+           asp-for="MaxProduction"/>
+    <br>
+    <input type="submit" class="btn btn-primary" value="Add"/>
+</form>
+
+<div>
+    <a asp-controller="Equipment" asp-action="Index">Back to the Future</a>
+</div>

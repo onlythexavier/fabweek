@@ -111,9 +111,9 @@ namespace ISEN.DotNet.Web
             // SeedData
             var seedService = app.ApplicationServices.GetService<SeedData>();
             seedService.DropCreateDatabase();
-            seedService.AddEquipment();
+            /*seedService.AddEquipment();
             seedService.AddOwner();
-            seedService.AddStatement();
+            seedService.AddStatement();*/
             
             seedService.AddAdminAndRole();
         }
