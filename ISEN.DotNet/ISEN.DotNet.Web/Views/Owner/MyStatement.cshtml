@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "My Statement";
     Layout = "_Layout";
+    var statements = StatementRepository.Find(p => p.Equipment.Owner == Model);
 }
 @model ISEN.DotNet.Library.Models.Owner
 @inject IStatementRepository StatementRepository
@@ -10,6 +11,130 @@
 <div class="row">
     <div class="col-md-12">
         <h3>My Statement :</h3>
+        <div class="chart-container" style="position: relative; height: auto; width: 50vw">
+            <canvas id="myChart"></canvas>
+        </div>
+        <script>
+            var timeFormat = 'MM/DD/YYYY HH:mm';
+
+            function newDateString(hour) {
+                return moment().add(hour, 'H').format(timeFormat);
+            }
+
+            var ctx = document.getElementById("myChart").getContext('2d');
+            var myChart = new Chart(ctx,
+                {
+                    type: 'line',
+                    data: {
+                        labels: [
+                            newDateString(0),
+                            newDateString(1),
+                            newDateString(2),
+                            newDateString(3),
+                            newDateString(4),
+                            newDateString(5),
+                            newDateString(6),
+                            newDateString(7),
+                            newDateString(8),
+                            newDateString(9),
+                            newDateString(10),
+                            newDateString(11),
+                            newDateString(12),
+                            newDateString(13),
+                            newDateString(14),
+                            newDateString(15),
+                            newDateString(16),
+                            newDateString(17),
+                            newDateString(18),
+                            newDateString(19),
+                            newDateString(20),
+                            newDateString(21),
+                            newDateString(22),
+                            newDateString(23)
+                        ],
+                        datasets: [
+                            {
+                                label: 'Consommation',
+                                data: [
+                                    randomScalingFactor(), 
+                                    randomScalingFactor(), 
+                                    randomScalingFactor(), 
+                                    randomScalingFactor(), 
+                                    randomScalingFactor(), 
+                                    randomScalingFactor(), 
+                                    randomScalingFactor(),
+                                    randomScalingFactor(),
+                                    randomScalingFactor(),
+                                    randomScalingFactor(),
+                                    randomScalingFactor(),
+                                    randomScalingFactor(),
+                                    randomScalingFactor(),
+                                    randomScalingFactor(),
+                                    randomScalingFactor(),
+                                    randomScalingFactor(),
+                                    randomScalingFactor(),
+                                    randomScalingFactor(),
+                                    randomScalingFactor(),
+                                    randomScalingFactor(),
+                                    randomScalingFactor(),
+                                    randomScalingFactor(),
+                                    randomScalingFactor(),
+                                    randomScalingFactor()
+                                ],
+                                borderColor: "rgba(228,82,82,0.5)",
+                                fill: false,
+                                borderWidth: 3
+                            },
+                            {
+                                label: 'Production',
+                                data: [
+                                    randomScalingFactor(), 
+                                    randomScalingFactor(), 
+                                    randomScalingFactor(), 
+                                    randomScalingFactor(), 
+                                    randomScalingFactor(), 
+                                    randomScalingFactor(), 
+                                    randomScalingFactor(),
+                                    randomScalingFactor(),
+                                    randomScalingFactor(),
+                                    randomScalingFactor(),
+                                    randomScalingFactor(),
+                                    randomScalingFactor(),
+                                    randomScalingFactor(),
+                                    randomScalingFactor(),
+                                    randomScalingFactor(),
+                                    randomScalingFactor(),
+                                    randomScalingFactor(),
+                                    randomScalingFactor(),
+                                    randomScalingFactor(),
+                                    randomScalingFactor(),
+                                    randomScalingFactor(),
+                                    randomScalingFactor(),
+                                    randomScalingFactor(),
+                                    randomScalingFactor()],
+                                borderColor: "rgba(0,204,0,0.5)",
+                                fill: false,
+                                borderWidth: 3
+                            }
+                        ]
+                    },
+                    options: {
+                title: {
+                    text:"Chart.js Combo Time Scale"
+                },
+				scales: {
+					xAxes: [{
+						type: "time",
+						display: true,
+						time: {
+							format: timeFormat,
+							// round: 'day'
+						}
+					}],
+				},
+			}
+                });
+        </script>
         <table class="table table-striped">
             <thead>
             <tr>
@@ -28,7 +153,7 @@
             </tr>
             </thead>
             <tbody>
-            @foreach (var statement in StatementRepository.Find(p => p.Equipment.Owner == Model))
+            @foreach (var statement in statements)
             {
                 <tr>
                     <td>@statement.Date</td>
