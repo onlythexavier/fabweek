@@ -84,11 +84,110 @@ namespace ISEN.DotNet.Library.Data
                 var equipment = new Equipment()
                 {
                     Type = "SolarPanel",
-                    MaxProduction = 123,
+                    MaxProduction = 400,
                     IdObject = "SolarPanel123",
                 };
                 _equipmentRepository.Update(equipment);
                 _equipmentRepository.Save();
+                
+                var statement1 = new Statement()
+                {
+                    Production = 50,
+                    Consommation = 100,
+                    OverProduction = 0,
+                    Equipment = equipment,
+                    Date = new DateTime(2017,06,16,08,55,15)
+                };
+                var statement2 = new Statement()
+                {
+                    Production = 100,
+                    Consommation = 150,
+                    OverProduction = 0,
+                    Equipment = equipment,
+                    Date = new DateTime(2017,06,16,09,33,22)
+                };
+                var statement3 = new Statement()
+                {
+                    Production = 150,
+                    Consommation = 0,
+                    OverProduction = 100,
+                    Equipment = equipment,
+                    Date = new DateTime(2017,06,16,10,42,06)
+                };
+                var statement4 = new Statement()
+                {
+                    Production = 200,
+                    Consommation = 0,
+                    OverProduction = 150,
+                    Equipment = equipment,
+                    Date = new DateTime(2017,06,16,11,02,01)
+                };
+                var statement5 = new Statement()
+                {
+                    Production = 250,
+                    Consommation = 0,
+                    OverProduction = 200,
+                    Equipment = equipment,
+                    Date = new DateTime(2017,06,16,12,02,01)
+                };
+                var statement6 = new Statement()
+                {
+                    Production = 300,
+                    Consommation = 0,
+                    OverProduction = 250,
+                    Equipment = equipment,
+                    Date = new DateTime(2017,06,16,13,53,11)
+                };
+                var statement7 = new Statement()
+                {
+                    Production = 350,
+                    Consommation = 0,
+                    OverProduction = 300,
+                    Equipment = equipment,
+                    Date = new DateTime(2017,06,16,14,23,35)
+                };
+                var statement8 = new Statement()
+                {
+                    Production = 300,
+                    Consommation = 0,
+                    OverProduction = 250,
+                    Equipment = equipment,
+                    Date = new DateTime(2017,06,16,15,15,21)
+                };
+                var statement9 = new Statement()
+                {
+                    Production = 250,
+                    Consommation = 0,
+                    OverProduction = 200,
+                    Equipment = equipment,
+                    Date = new DateTime(2017,06,16,16,08,31)
+                };
+                var statement10 = new Statement()
+                {
+                    Production = 200,
+                    Consommation = 250,
+                    OverProduction = 0,
+                    Equipment = equipment,
+                    Date = new DateTime(2017,06,16,17,59,59)
+                };
+                var statement11 = new Statement()
+                {
+                    Production = 100,
+                    Consommation = 300,
+                    OverProduction = 0,
+                    Equipment = equipment,
+                    Date = new DateTime(2017,06,16,18,32,23)
+                };
+                var statement12 = new Statement()
+                {
+                    Production = 0,
+                    Consommation = 350,
+                    OverProduction = 0,
+                    Equipment = equipment,
+                    Date = new DateTime(2017,06,16,23,59,59)
+                };
+                _statementRepository.UpdateRange(statement1, statement2, statement3, statement5, statement6, statement7, statement8, statement9, statement10, statement11, statement12);
+                _statementRepository.Save();
             }
         }
         /*public void AddOwner()
@@ -99,9 +198,12 @@ namespace ISEN.DotNet.Library.Data
 
              _logger.LogWarning("Ajout des owner");
 
- #region 5 owner random
+ #region 2 owner random
              var p1 = new Owner()
              {
+                 Email = "xavier.dupont@isen.fr",
+                 UserName = "xavierdupont",
+                 Password = "xavier",
                  LastName = "DUPONT",
                  FirstName = "Xavier",
                  City = "Toulon",
@@ -109,35 +211,17 @@ namespace ISEN.DotNet.Library.Data
              };    
              var p2 = new Owner()
              {
+                 Email = "xavier.mallat@isen.fr",
+                 UserName = "xaviermalalt",
+                 Password = "xavier",
                  LastName = "MALLAT DESMORTIERS",
                  FirstName = "Xavier",
                  City = "Marseille",
                  Country = "France"
              };
-             var p3 = new Owner()
-             {
-                 LastName = "MAROUN",
-                 FirstName = "Marc",
-                 City = "Marseille",
-                 Country = "France"
-             };
-             var p4 = new Owner()
-             {
-                 LastName = "HIVERT",
-                 FirstName = "Thomas",
-                 City = "La Seyne-sur-Mer",
-                 Country = "France"
-             };
-             var p5 = new Owner()
-             {
-                 LastName = "BOTTEMER",
-                 FirstName = "Alexis",
-                 City = "Toulon",
-                 Country = "France"
-             };
  #endregion
 
-             _ownerRepository.UpdateRange(p1, p2, p3, p4, p5);
+             _ownerRepository.UpdateRange(p1, p2);
              _ownerRepository.Save();
 
              _logger.LogWarning("Owner added");
@@ -189,19 +273,29 @@ namespace ISEN.DotNet.Library.Data
 
              _logger.LogWarning("Ajout des reservations");
 
- #region 2 statement random
+ #region 10 statement random
              var r1 = new Statement(){
+                 Equipment = (Equipment)t1,
+                 Production = 100,
+                 Consommation = 300,
+             };
+             var r2 = new Statement(){
+                 Equipment = (Equipment)t1,
+                 Production = 200,
+                 Consommation = 300
+             };
+             var r3 = new Statement(){
+                 Equipment = (Equipment)t1,
+                 Production = 300,
+                 Consommation = 300
+             };
+             var r4 = new Statement(){
                  Equipment = (Equipment)t1,
                  Production = 400,
                  Consommation = 300
              };
-             var r2 = new Statement(){
-                 Equipment = (Equipment)t2,
-                 Production = 200,
-                 Consommation = 100
-             };
  #endregion
-             _statementRepository.UpdateRange(r1, r2);
+             _statementRepository.UpdateRange(r1, r2, r3, r4, r5);
              _statementRepository.Save();
 
              _logger.LogWarning("Statement added");

@@ -2,7 +2,6 @@
 @{
     ViewBag.Title = "My Energy";
     Layout = "_Layout";
-
 }
 @inject IStatementRepository StatementRepository
 @model ISEN.DotNet.Library.Models.Equipment
@@ -19,17 +18,33 @@
                         Consommation
                     </th>
                     <th>
-                        Production / Maximum Production
+                        Production
+                    </th>
+                    <th>
+                        Surproduction
+                    </th>
+                    <th>
+                        Rendement
                     </th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var statement in StatementRepository.Find(p => p.Id == Model.Id))
+                @foreach (var statement in StatementRepository.Find(p => p.Equipment.Id == Model.Id))
                 {
                     <tr>
                         <td>@statement.Date</td>
                         <td>@statement.Consommation</td>
-                        <td>@statement.Production / @statement.Equipment.MaxProduction</td>
+                        <td>@statement.Production</td>
+                        <td>@statement.OverProduction</td>
+                        <td>@if (@statement.Rendement > 50)
+                            {
+                                <p style="color : green">@statement.Rendement%</p>
+                            }
+                            else
+                            {
+                                <p style="color : red">@statement.Rendement%</p>
+                            }
+                        </td>
                     </tr>
                 }
             </tbody>
