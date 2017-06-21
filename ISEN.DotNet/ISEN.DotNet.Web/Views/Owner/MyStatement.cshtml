@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "My Statement";
     Layout = "_Layout";
-    var statements = StatementRepository.Find(p => p.Equipment.Owner == Model);
+    var statements = StatementRepository.Find(p => p.Equipment.Owner == Model).OrderBy(p => p.Date);
 }
 @model ISEN.DotNet.Library.Models.Owner
 @inject IStatementRepository StatementRepository
@@ -10,131 +10,48 @@
 <h2>@Model.Display</h2>
 <div class="row">
     <div class="col-md-12">
-        <h3>My Statement :</h3>
-        <div class="chart-container" style="position: relative; height: auto; width: 50vw">
-            <canvas id="myChart"></canvas>
-        </div>
-        <script>
-            var timeFormat = 'MM/DD/YYYY HH:mm';
+        <h3>My Statements :</h3>
+        <a id="button1" class="btn btn-primary">Energy Graph</a>
+        <a id="button2" class="btn btn-primary">Comparison Graph</a>
+        <a id="button3" class="btn btn-primary">Production Graph</a>
+        <div id="linechartdiv" style="width: 50vw; height:auto"><canvas id="lineChart"></canvas></div>
+        <div id="barchartdiv" style="width: 50vw; height:auto"><canvas id="barChart"></canvas></div>
+        <div id="polarchartdiv" style="width: 25vw; height:auto"><canvas id="polarChart"></canvas></div>
+        @{ChartJSCore.Models.Chart chart1 = (ChartJSCore.Models.Chart)ViewData["chart1"]; }
+        @{ChartJSCore.Models.Chart chart2 = (ChartJSCore.Models.Chart)ViewData["chart2"]; }
+        @{ChartJSCore.Models.Chart chart3 = (ChartJSCore.Models.Chart)ViewData["chart3"]; }
 
-            function newDateString(hour) {
-                return moment().add(hour, 'H').format(timeFormat);
-            }
+        @section Scripts {
+            <script>
+                @Html.Raw(chart1.CreateChartCode("lineChart"));
+                @Html.Raw(chart2.CreateChartCode("barChart"));
+                @Html.Raw(chart3.CreateChartCode("polarChart"));
 
-            var ctx = document.getElementById("myChart").getContext('2d');
-            var myChart = new Chart(ctx,
-                {
-                    type: 'line',
-                    data: {
-                        labels: [
-                            newDateString(0),
-                            newDateString(1),
-                            newDateString(2),
-                            newDateString(3),
-                            newDateString(4),
-                            newDateString(5),
-                            newDateString(6),
-                            newDateString(7),
-                            newDateString(8),
-                            newDateString(9),
-                            newDateString(10),
-                            newDateString(11),
-                            newDateString(12),
-                            newDateString(13),
-                            newDateString(14),
-                            newDateString(15),
-                            newDateString(16),
-                            newDateString(17),
-                            newDateString(18),
-                            newDateString(19),
-                            newDateString(20),
-                            newDateString(21),
-                            newDateString(22),
-                            newDateString(23)
-                        ],
-                        datasets: [
-                            {
-                                label: 'Consommation',
-                                data: [
-                                    randomScalingFactor(), 
-                                    randomScalingFactor(), 
-                                    randomScalingFactor(), 
-                                    randomScalingFactor(), 
-                                    randomScalingFactor(), 
-                                    randomScalingFactor(), 
-                                    randomScalingFactor(),
-                                    randomScalingFactor(),
-                                    randomScalingFactor(),
-                                    randomScalingFactor(),
-                                    randomScalingFactor(),
-                                    randomScalingFactor(),
-                                    randomScalingFactor(),
-                                    randomScalingFactor(),
-                                    randomScalingFactor(),
-                                    randomScalingFactor(),
-                                    randomScalingFactor(),
-                                    randomScalingFactor(),
-                                    randomScalingFactor(),
-                                    randomScalingFactor(),
-                                    randomScalingFactor(),
-                                    randomScalingFactor(),
-                                    randomScalingFactor(),
-                                    randomScalingFactor()
-                                ],
-                                borderColor: "rgba(228,82,82,0.5)",
-                                fill: false,
-                                borderWidth: 3
-                            },
-                            {
-                                label: 'Production',
-                                data: [
-                                    randomScalingFactor(), 
-                                    randomScalingFactor(), 
-                                    randomScalingFactor(), 
-                                    randomScalingFactor(), 
-                                    randomScalingFactor(), 
-                                    randomScalingFactor(), 
-                                    randomScalingFactor(),
-                                    randomScalingFactor(),
-                                    randomScalingFactor(),
-                                    randomScalingFactor(),
-                                    randomScalingFactor(),
-                                    randomScalingFactor(),
-                                    randomScalingFactor(),
-                                    randomScalingFactor(),
-                                    randomScalingFactor(),
-                                    randomScalingFactor(),
-                                    randomScalingFactor(),
-                                    randomScalingFactor(),
-                                    randomScalingFactor(),
-                                    randomScalingFactor(),
-                                    randomScalingFactor(),
-                                    randomScalingFactor(),
-                                    randomScalingFactor(),
-                                    randomScalingFactor()],
-                                borderColor: "rgba(0,204,0,0.5)",
-                                fill: false,
-                                borderWidth: 3
-                            }
-                        ]
-                    },
-                    options: {
-                title: {
-                    text:"Chart.js Combo Time Scale"
-                },
-				scales: {
-					xAxes: [{
-						type: "time",
-						display: true,
-						time: {
-							format: timeFormat,
-							// round: 'day'
-						}
-					}],
-				},
-			}
+                $(document).ready(function () {
+                    $('#barchartdiv').hide();
+                    $('#polarchartdiv').hide();
+                    $("#button1").click(function(){
+                        $("#linechartdiv").show();
+                        $("#barchartdiv").hide();
+                        $("#polarchartdiv").hide();
+                    });
                 });
-        </script>
+                $(document).ready(function () {
+                    $("#button2").click(function () {
+                        $("#barchartdiv").show();
+                        $("#linechartdiv").hide();
+                        $("#polarchartdiv").hide();
+                    });
+                });
+                $(document).ready(function () {
+                    $("#button3").click(function () {
+                        $("#polarchartdiv").show();
+                        $("#linechartdiv").hide();
+                        $("#barchartdiv").hide();
+                    });
+                });
+            </script>
+        }
         <table class="table table-striped">
             <thead>
             <tr>

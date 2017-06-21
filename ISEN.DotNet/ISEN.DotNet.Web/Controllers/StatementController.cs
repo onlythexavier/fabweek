@@ -1,7 +1,6 @@
 using ISEN.DotNet.Library.Models;
 using ISEN.DotNet.Library.Repositories.Interfaces;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 namespace ISEN.DotNet.Web.Controllers
