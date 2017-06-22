@@ -95,8 +95,8 @@ namespace ISEN.DotNet.Library.Data
                     Type = "SolarPanel",
                     MaxProduction = 0.4,
                     IdObject = "SolarPanel1",
-                    Longitude = 15.0,
-                    Latitude = 15.0,
+                    Longitude = 5.55,
+                    Latitude = 43.07,
                     StatementCollection = { }
                 };
                 var equipment2 = new Equipment()
@@ -106,8 +106,8 @@ namespace ISEN.DotNet.Library.Data
                     Type = "SolarPanel",
                     MaxProduction = 0.4,
                     IdObject = "SolarPanel2",
-                    Longitude = 15.0,
-                    Latitude = 15.0,
+                    Longitude = 5.55,
+                    Latitude = 43.07,
                     StatementCollection = { }
                 };
                 var equipment3 = new Equipment()
@@ -117,8 +117,8 @@ namespace ISEN.DotNet.Library.Data
                     Type = "SolarPanel",
                     MaxProduction = 0.4,
                     IdObject = "SolarPanel3",
-                    Longitude = 15.0,
-                    Latitude = 15.0,
+                    Longitude = 5.55,
+                    Latitude = 43.07,
                     StatementCollection = { }
                 };
                 var equipment4 = new Equipment()
@@ -128,8 +128,8 @@ namespace ISEN.DotNet.Library.Data
                     Type = "SolarPanel",
                     MaxProduction = 0.4,
                     IdObject = "SolarPanel4",
-                    Longitude = 15.0,
-                    Latitude = 15.0,
+                    Longitude = 5.55,
+                    Latitude = 43.07,
                     StatementCollection = { }
                 };
                 var equipment5 = new Equipment()
@@ -139,8 +139,8 @@ namespace ISEN.DotNet.Library.Data
                     Type = "SolarPanel",
                     MaxProduction = 0.4,
                     IdObject = "SolarPanel5",
-                    Longitude = 15.0,
-                    Latitude = 15.0,
+                    Longitude = 5.55,
+                    Latitude = 43.07,
                     StatementCollection = { }
                 };
                 var equipment6 = new Equipment()
@@ -150,8 +150,8 @@ namespace ISEN.DotNet.Library.Data
                     Type = "SolarPanel",
                     MaxProduction = 0.4,
                     IdObject = "SolarPanel6",
-                    Longitude = 15.0,
-                    Latitude = 15.0,
+                    Longitude = 5.55,
+                    Latitude = 43.07,
                     StatementCollection = { }
                 };
                 var equipment7 = new Equipment()
@@ -161,8 +161,8 @@ namespace ISEN.DotNet.Library.Data
                     Type = "SolarPanel",
                     MaxProduction = 0.4,
                     IdObject = "SolarPanel7",
-                    Longitude = 15.0,
-                    Latitude = 15.0,
+                    Longitude = 5.55,
+                    Latitude = 43.07,
                     StatementCollection = { }
                 };
                 var equipment8 = new Equipment()
@@ -172,8 +172,8 @@ namespace ISEN.DotNet.Library.Data
                     Type = "SolarPanel",
                     MaxProduction = 0.4,
                     IdObject = "SolarPanel8",
-                    Longitude = 15.0,
-                    Latitude = 15.0,
+                    Longitude = 5.55,
+                    Latitude = 43.07,
                     StatementCollection = { }
                 };
                 var equipment9 = new Equipment()
@@ -181,8 +181,8 @@ namespace ISEN.DotNet.Library.Data
                     Type = "SolarPanel",
                     MaxProduction = 0.4,
                     IdObject = "SolarPanel9",
-                    Longitude = 15.0,
-                    Latitude = 15.0,
+                    Longitude = 5.55,
+                    Latitude = 43.07,
                     StatementCollection = { }
                 };
                 var equipment10 = new Equipment()
@@ -190,8 +190,8 @@ namespace ISEN.DotNet.Library.Data
                     Type = "SolarPanel",
                     MaxProduction = 0.4,
                     IdObject = "SolarPanel10",
-                    Longitude = 15.0,
-                    Latitude = 15.0,
+                    Longitude = 5.55,
+                    Latitude = 43.07,
                     StatementCollection = { }
                 };
                 _equipmentRepository.UpdateRange(equipment1, equipment2, equipment3, equipment4, equipment5, equipment6,
@@ -207,7 +207,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0,
                     Consommation = 0.5,
                     OverProduction = 0,
-                    Date = new DateTime(2017, 06, 16, 00, 01, 12)
+                    Date = new DateTime(2017, 06, 16, 00, 01, 12),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment1.AddStatement(statement1);
                 var statement2 = new Statement()
@@ -215,7 +217,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0,
                     Consommation = 0.5,
                     OverProduction = 0,
-                    Date = new DateTime(2017, 06, 16, 00, 33, 22)
+                    Date = new DateTime(2017, 06, 16, 00, 33, 22),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment1.AddStatement(statement2);
                 var statement3 = new Statement()
@@ -223,7 +227,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0,
                     Consommation = 0.5,
                     OverProduction = 0,
-                    Date = new DateTime(2017, 06, 16, 01, 02, 06)
+                    Date = new DateTime(2017, 06, 16, 01, 02, 06),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment1.AddStatement(statement3);
                 var statement4 = new Statement()
@@ -231,7 +237,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0,
                     Consommation = 0.5,
                     OverProduction = 0,
-                    Date = new DateTime(2017, 06, 16, 01, 32, 01)
+                    Date = new DateTime(2017, 06, 16, 01, 32, 01),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment1.AddStatement(statement4);
                 var statement5 = new Statement()
@@ -239,7 +247,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0,
                     Consommation = 0.5,
                     OverProduction = 0,
-                    Date = new DateTime(2017, 06, 16, 02, 02, 05)
+                    Date = new DateTime(2017, 06, 16, 02, 02, 05),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment1.AddStatement(statement5);
                 var statement6 = new Statement()
@@ -247,7 +257,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0,
                     Consommation = 0.5,
                     OverProduction = 0,
-                    Date = new DateTime(2017, 06, 16, 02, 33, 11)
+                    Date = new DateTime(2017, 06, 16, 02, 33, 11),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment1.AddStatement(statement6);
                 var statement7 = new Statement()
@@ -255,7 +267,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0,
                     Consommation = 0.5,
                     OverProduction = 0,
-                    Date = new DateTime(2017, 06, 16, 02, 59, 35)
+                    Date = new DateTime(2017, 06, 16, 02, 59, 35),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment1.AddStatement(statement7);
                 var statement8 = new Statement()
@@ -263,7 +277,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0,
                     Consommation = 0.5,
                     OverProduction = 0,
-                    Date = new DateTime(2017, 06, 16, 03, 25, 21)
+                    Date = new DateTime(2017, 06, 16, 03, 25, 21),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment1.AddStatement(statement8);
                 var statement9 = new Statement()
@@ -271,7 +287,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0,
                     Consommation = 0.5,
                     OverProduction = 0,
-                    Date = new DateTime(2017, 06, 16, 03, 58, 31)
+                    Date = new DateTime(2017, 06, 16, 03, 58, 31),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment1.AddStatement(statement9);
                 var statement10 = new Statement()
@@ -279,7 +297,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0,
                     Consommation = 0.5,
                     OverProduction = 0,
-                    Date = new DateTime(2017, 06, 16, 04, 32, 23)
+                    Date = new DateTime(2017, 06, 16, 04, 32, 23),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment1.AddStatement(statement10);
                 var statement11 = new Statement()
@@ -287,7 +307,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0,
                     Consommation = 0.5,
                     OverProduction = 0,
-                    Date = new DateTime(2017, 06, 16, 04, 51, 57)
+                    Date = new DateTime(2017, 06, 16, 04, 51, 57),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment1.AddStatement(statement11);
                 var statement12 = new Statement()
@@ -295,7 +317,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0,
                     Consommation = 0.5,
                     OverProduction = 0,
-                    Date = new DateTime(2017, 06, 16, 05, 38, 12)
+                    Date = new DateTime(2017, 06, 16, 05, 38, 12),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment1.AddStatement(statement12);
                 var statement13 = new Statement()
@@ -303,7 +327,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0 + GetRandomNumber(0, 0.0001),
                     Consommation = 0.5,
                     OverProduction = 0,
-                    Date = new DateTime(2017, 06, 16, 05, 58, 01)
+                    Date = new DateTime(2017, 06, 16, 05, 58, 01),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment1.AddStatement(statement13);
                 var statement14 = new Statement()
@@ -311,7 +337,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0 + GetRandomNumber(0, 0.0005),
                     Consommation = 0.5,
                     OverProduction = 0,
-                    Date = new DateTime(2017, 06, 16, 06, 27, 21)
+                    Date = new DateTime(2017, 06, 16, 06, 27, 21),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment1.AddStatement(statement14);
                 var statement15 = new Statement()
@@ -319,7 +347,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0 + GetRandomNumber(0, 0.01),
                     Consommation = 1.5,
                     OverProduction = 0,
-                    Date = new DateTime(2017, 06, 16, 07, 10, 19)
+                    Date = new DateTime(2017, 06, 16, 07, 10, 19),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment1.AddStatement(statement15);
                 var statement16 = new Statement()
@@ -327,7 +357,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0.001 + GetRandomNumber(0.005, 0.001),
                     Consommation = 1,
                     OverProduction = 0,
-                    Date = new DateTime(2017, 06, 16, 07, 31, 49)
+                    Date = new DateTime(2017, 06, 16, 07, 31, 49),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment1.AddStatement(statement16);
                 var statement17 = new Statement()
@@ -335,7 +367,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0.001 + GetRandomNumber(0.005, 0.001),
                     Consommation = 0.5,
                     OverProduction = 0,
-                    Date = new DateTime(2017, 06, 16, 08, 02, 07)
+                    Date = new DateTime(2017, 06, 16, 08, 02, 07),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment1.AddStatement(statement17);
                 var statement18 = new Statement()
@@ -343,7 +377,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0.015 + GetRandomNumber(0.005, 0.001),
                     Consommation = 0.5,
                     OverProduction = 0,
-                    Date = new DateTime(2017, 06, 16, 08, 27, 35)
+                    Date = new DateTime(2017, 06, 16, 08, 27, 35),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment1.AddStatement(statement18);
                 var statement19 = new Statement()
@@ -351,7 +387,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0.010 + GetRandomNumber(0.005, 0.01),
                     Consommation = 0.5,
                     OverProduction = 0,
-                    Date = new DateTime(2017, 06, 16, 09, 00, 00)
+                    Date = new DateTime(2017, 06, 16, 09, 00, 00),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment1.AddStatement(statement19);
                 var statement20 = new Statement()
@@ -359,7 +397,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0.012 + GetRandomNumber(0.006, 0.012),
                     Consommation = 0.5,
                     OverProduction = 0,
-                    Date = new DateTime(2017, 06, 16, 09, 27, 42)
+                    Date = new DateTime(2017, 06, 16, 09, 27, 42),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment1.AddStatement(statement20);
                 var statement21 = new Statement()
@@ -367,7 +407,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0.018 + GetRandomNumber(0.009, 0.012),
                     Consommation = 0.5,
                     OverProduction = 0,
-                    Date = new DateTime(2017, 06, 16, 09, 59, 03)
+                    Date = new DateTime(2017, 06, 16, 09, 59, 03),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment1.AddStatement(statement21);
                 var statement22 = new Statement()
@@ -375,7 +417,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0.056 + GetRandomNumber(0.0025, 0.0035),
                     Consommation = 0.5,
                     OverProduction = 0,
-                    Date = new DateTime(2017, 06, 16, 10, 28, 13)
+                    Date = new DateTime(2017, 06, 16, 10, 28, 13),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment1.AddStatement(statement22);
                 var statement23 = new Statement()
@@ -383,7 +427,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0.084 + GetRandomNumber(0.01, 0.0020),
                     Consommation = 0.5,
                     OverProduction = 0,
-                    Date = new DateTime(2017, 06, 16, 10, 59, 59)
+                    Date = new DateTime(2017, 06, 16, 10, 59, 59),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment1.AddStatement(statement23);
                 var statement24 = new Statement()
@@ -391,7 +437,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0.06 + GetRandomNumber(0.01, 0.0020),
                     Consommation = 0.5,
                     OverProduction = 0,
-                    Date = new DateTime(2017, 06, 16, 11, 34, 15)
+                    Date = new DateTime(2017, 06, 16, 11, 34, 15),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment1.AddStatement(statement24);
                 var statement25 = new Statement()
@@ -399,7 +447,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0.08 + GetRandomNumber(0.0025, 0.0035),
                     Consommation = 0.5,
                     OverProduction = 0,
-                    Date = new DateTime(2017, 06, 16, 11, 58, 39)
+                    Date = new DateTime(2017, 06, 16, 11, 58, 39),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment1.AddStatement(statement25);
                 var statement26 = new Statement()
@@ -407,7 +457,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0.08 + GetRandomNumber(0.01, 0.0006),
                     Consommation = 0.5,
                     OverProduction = 0,
-                    Date = new DateTime(2017, 06, 16, 12, 32, 57)
+                    Date = new DateTime(2017, 06, 16, 12, 32, 57),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment1.AddStatement(statement26);
                 var statement27 = new Statement()
@@ -415,7 +467,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0.08 + GetRandomNumber(0.01, 0.0006),
                     Consommation = 0.5,
                     OverProduction = 0,
-                    Date = new DateTime(2017, 06, 16, 12, 52, 49)
+                    Date = new DateTime(2017, 06, 16, 12, 52, 49),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment1.AddStatement(statement27);
                 var statement28 = new Statement()
@@ -423,7 +477,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0.10 + GetRandomNumber(0.05, 0.09),
                     Consommation = 0.5,
                     OverProduction = 0,
-                    Date = new DateTime(2017, 06, 16, 13, 24, 33)
+                    Date = new DateTime(2017, 06, 16, 13, 24, 33),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment1.AddStatement(statement28);
                 var statement29 = new Statement()
@@ -431,7 +487,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0.14 + GetRandomNumber(0.05, 0.09),
                     Consommation = 0.5,
                     OverProduction = 0.2,
-                    Date = new DateTime(2017, 06, 16, 13, 51, 47)
+                    Date = new DateTime(2017, 06, 16, 13, 51, 47),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment1.AddStatement(statement29);
                 var statement30 = new Statement()
@@ -439,7 +497,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0.14 + GetRandomNumber(0.05, 0.09),
                     Consommation = 0.5,
                     OverProduction = 0.2,
-                    Date = new DateTime(2017, 06, 16, 14, 21, 12)
+                    Date = new DateTime(2017, 06, 16, 14, 21, 12),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment1.AddStatement(statement30);
                 var statement31 = new Statement()
@@ -447,7 +507,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0.16 + GetRandomNumber(0.05, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.3,
-                    Date = new DateTime(2017, 06, 16, 14, 59, 47)
+                    Date = new DateTime(2017, 06, 16, 14, 59, 47),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment1.AddStatement(statement31);
                 var statement32 = new Statement()
@@ -455,7 +517,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0.250 + GetRandomNumber(0.08, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.75,
-                    Date = new DateTime(2017, 06, 16, 15, 29, 53)
+                    Date = new DateTime(2017, 06, 16, 15, 29, 53),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment1.AddStatement(statement32);
                 var statement33 = new Statement()
@@ -463,7 +527,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0.250 + GetRandomNumber(0.08, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.75,
-                    Date = new DateTime(2017, 06, 16, 15, 57, 38)
+                    Date = new DateTime(2017, 06, 16, 15, 57, 38),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment1.AddStatement(statement33);
                 var statement34 = new Statement()
@@ -471,7 +537,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0.240 + GetRandomNumber(0.08, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.7,
-                    Date = new DateTime(2017, 06, 16, 16, 33, 12)
+                    Date = new DateTime(2017, 06, 16, 16, 33, 12),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment1.AddStatement(statement34);
                 var statement35 = new Statement()
@@ -479,7 +547,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0.220 + GetRandomNumber(0.05, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.6,
-                    Date = new DateTime(2017, 06, 16, 16, 59, 01)
+                    Date = new DateTime(2017, 06, 16, 16, 59, 01),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment1.AddStatement(statement35);
                 var statement36 = new Statement()
@@ -487,7 +557,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0.220 + GetRandomNumber(0.05, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.6,
-                    Date = new DateTime(2017, 06, 16, 17, 23, 07)
+                    Date = new DateTime(2017, 06, 16, 17, 23, 07),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment1.AddStatement(statement36);
                 var statement37 = new Statement()
@@ -495,7 +567,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0.18 + GetRandomNumber(0.01, 0.0006),
                     Consommation = 0.5,
                     OverProduction = 0.4,
-                    Date = new DateTime(2017, 06, 16, 17, 57, 31)
+                    Date = new DateTime(2017, 06, 16, 17, 57, 31),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment1.AddStatement(statement37);
                 var statement38 = new Statement()
@@ -503,7 +577,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0.14 + GetRandomNumber(0.0025, 0.0035),
                     Consommation = 1,
                     OverProduction = 0,
-                    Date = new DateTime(2017, 06, 16, 18, 37, 46)
+                    Date = new DateTime(2017, 06, 16, 18, 37, 46),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment1.AddStatement(statement38);
                 var statement39 = new Statement()
@@ -511,7 +587,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0.12 + GetRandomNumber(0.01, 0.08),
                     Consommation = 1,
                     OverProduction = 0,
-                    Date = new DateTime(2017, 06, 16, 18, 51, 12)
+                    Date = new DateTime(2017, 06, 16, 18, 51, 12),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment1.AddStatement(statement39);
                 var statement40 = new Statement()
@@ -519,7 +597,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0.10 + GetRandomNumber(0.01, 0.0020),
                     Consommation = 2,
                     OverProduction = 0,
-                    Date = new DateTime(2017, 06, 16, 19, 21, 56)
+                    Date = new DateTime(2017, 06, 16, 19, 21, 56),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment1.AddStatement(statement40);
                 var statement41 = new Statement()
@@ -527,7 +607,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0.08 + GetRandomNumber(0.01, 0.0020),
                     Consommation = 2.5,
                     OverProduction = 0,
-                    Date = new DateTime(2017, 06, 16, 19, 51, 13)
+                    Date = new DateTime(2017, 06, 16, 19, 51, 13),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment1.AddStatement(statement41);
                 var statement42 = new Statement()
@@ -535,7 +617,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0.04 + GetRandomNumber(0.009, 0.012),
                     Consommation = 2.5,
                     OverProduction = 0,
-                    Date = new DateTime(2017, 06, 16, 20, 30, 01)
+                    Date = new DateTime(2017, 06, 16, 20, 30, 01),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment1.AddStatement(statement42);
                 var statement43 = new Statement()
@@ -543,7 +627,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0.04 + GetRandomNumber(0.009, 0.012),
                     Consommation = 3,
                     OverProduction = 0,
-                    Date = new DateTime(2017, 06, 16, 20, 55, 57)
+                    Date = new DateTime(2017, 06, 16, 20, 55, 57),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment1.AddStatement(statement43);
                 var statement44 = new Statement()
@@ -551,7 +637,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0.04 + GetRandomNumber(0, 0.02),
                     Consommation = 2,
                     OverProduction = 0,
-                    Date = new DateTime(2017, 06, 16, 21, 30, 00)
+                    Date = new DateTime(2017, 06, 16, 21, 30, 00),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment1.AddStatement(statement44);
                 var statement45 = new Statement()
@@ -559,7 +647,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0.04 + GetRandomNumber(0, 0.01),
                     Consommation = 1.5,
                     OverProduction = 0,
-                    Date = new DateTime(2017, 06, 16, 22, 07, 00)
+                    Date = new DateTime(2017, 06, 16, 22, 07, 00),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment1.AddStatement(statement45);
                 var statement46 = new Statement()
@@ -567,7 +657,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0.024 + GetRandomNumber(0.005, 0.001),
                     Consommation = 1,
                     OverProduction = 0,
-                    Date = new DateTime(2017, 06, 16, 22, 29, 57)
+                    Date = new DateTime(2017, 06, 16, 22, 29, 57),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment1.AddStatement(statement46);
                 var statement47 = new Statement()
@@ -575,7 +667,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0.016 + GetRandomNumber(0, 0.01),
                     Consommation = 0.5,
                     OverProduction = 0,
-                    Date = new DateTime(2017, 06, 16, 23, 01, 06)
+                    Date = new DateTime(2017, 06, 16, 23, 01, 06),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment1.AddStatement(statement47);
                 var statement48 = new Statement()
@@ -583,7 +677,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0 + GetRandomNumber(0, 0.0001),
                     Consommation = 0.5,
                     OverProduction = 0,
-                    Date = new DateTime(2017, 06, 16, 23, 35, 09)
+                    Date = new DateTime(2017, 06, 16, 23, 35, 09),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment1.AddStatement(statement48);
                 _statementRepository.UpdateRange(statement1, statement2, statement3, statement4, statement5, statement6,
@@ -980,7 +1076,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0 + GetRandomNumber(0, 0.0001),
                     Consommation = 0.5,
                     OverProduction = 0,
-                    Date = new DateTime(2017, 06, 16, 23, 35, 09)
+                    Date = new DateTime(2017, 06, 16, 23, 35, 09),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment2.AddStatement(statement95);
                 _statementRepository.UpdateRange(statement49, statement50, statement51, statement52, statement53,
@@ -1377,7 +1475,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0 + GetRandomNumber(0, 0.0001),
                     Consommation = 0.5,
                     OverProduction = 0,
-                    Date = new DateTime(2017, 06, 16, 23, 35, 09)
+                    Date = new DateTime(2017, 06, 16, 23, 35, 09),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment3.AddStatement(statement143);
                 _statementRepository.UpdateRange(statement97, statement98, statement99, statement100, statement101,
@@ -1779,7 +1879,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0 + GetRandomNumber(0, 0.0001),
                     Consommation = 0.5,
                     OverProduction = 0,
-                    Date = new DateTime(2017, 06, 16, 23, 35, 09)
+                    Date = new DateTime(2017, 06, 16, 23, 35, 09),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment4.AddStatement(statement191);
                 _statementRepository.UpdateRange(statement145, statement146, statement147, statement148, statement149,
@@ -2181,7 +2283,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0 + GetRandomNumber(0, 0.0001),
                     Consommation = 0.5,
                     OverProduction = 0,
-                    Date = new DateTime(2017, 06, 16, 23, 35, 09)
+                    Date = new DateTime(2017, 06, 16, 23, 35, 09),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment7.AddStatement(statement335);
                 _statementRepository.UpdateRange(statement289, statement290, statement291, statement292, statement293,
@@ -2583,7 +2687,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0 + GetRandomNumber(0, 0.0001),
                     Consommation = 0.5,
                     OverProduction = 0,
-                    Date = new DateTime(2017, 06, 16, 23, 35, 09)
+                    Date = new DateTime(2017, 06, 16, 23, 35, 09),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment6.AddStatement(statement288);
                 _statementRepository.UpdateRange(statement241, statement242, statement243, statement244, statement245,
@@ -2985,7 +3091,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0 + GetRandomNumber(0, 0.0001),
                     Consommation = 0.5,
                     OverProduction = 0,
-                    Date = new DateTime(2017, 06, 16, 23, 35, 09)
+                    Date = new DateTime(2017, 06, 16, 23, 35, 09),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment5.AddStatement(statement240);
                 _statementRepository.UpdateRange(statement193, statement194, statement195, statement196, statement197,
@@ -3387,7 +3495,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0 + GetRandomNumber(0, 0.0001),
                     Consommation = 0.5,
                     OverProduction = 0,
-                    Date = new DateTime(2017, 06, 16, 23, 35, 09)
+                    Date = new DateTime(2017, 06, 16, 23, 35, 09),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment8.AddStatement(statement383);
                 _statementRepository.UpdateRange(statement337, statement338, statement339, statement340, statement341,
@@ -3789,7 +3899,9 @@ namespace ISEN.DotNet.Library.Data
                     Production = 0 + GetRandomNumber(0, 0.0001),
                     Consommation = 0.5,
                     OverProduction = 0,
-                    Date = new DateTime(2017, 06, 16, 23, 35, 09)
+                    Date = new DateTime(2017, 06, 16, 23, 35, 09),
+                    Longitude = 5.55,
+                    Latitude = 43.07
                 };
                 equipment9.AddStatement(statement432);
                 _statementRepository.UpdateRange(statement385, statement386, statement387, statement388, statement389,

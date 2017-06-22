@@ -15,9 +15,8 @@
         <p>
             <a asp-controller="Equipment" asp-action="Enrole" class="btn btn-primary">Enrole New</a>
         </p>
-        <div id="openweathermap-widget-11"></div>
-        <script src='https://openweathermap.org/themes/openweathermap/assets/vendor/owm/js/d3.min.js'></script><script>window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];  window.myWidgetParam.push({id: 11, city: 'Toulon,FR',appid: '6b5b7b2a277e86508228c27aefef80c1',units: 'metric',containerid: 'openweathermap-widget-11',  });  (function() {var script = document.createElement('script');script.async = true;script.src = "https://openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(script, s);  })();</script>
-        <table class="table table-striped">
+       <div id="openweathermap-widget-11"></div>
+<script src='https://openweathermap.org/themes/openweathermap/assets/vendor/owm/js/d3.min.js'></script><script>window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];  window.myWidgetParam.push({id: 11,cityid: '2972328',appid: '6b5b7b2a277e86508228c27aefef80c1',units: 'metric',containerid: 'openweathermap-widget-11',  });  (function() {var script = document.createElement('script');script.async = true;script.src = "https://openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(script, s);  })();</script> <table class="table table-striped">
             <thead>
             <tr>
                 <th>
@@ -41,7 +40,7 @@
             @foreach (var equipment in EquipmentRepository.Find(p => p.Owner == Model))
             {
                 var tests = StatementRepository.Find(p => p.Equipment.Owner.Id == Model.Id &&
-                                              p.Equipment == equipment);
+                                              p.Equipment == equipment).OrderBy(p=> p.Date);
                 var lastLocation = "";
                 foreach (var test in tests)
                 {
