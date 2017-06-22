@@ -51,6 +51,7 @@ namespace ISEN.DotNet.Library.Data
             var createdString = created ? "created" : "not created";
             _logger.LogWarning($"Database was {createdString}");
         }
+
         public async void AddAdminAndRole()
         {
             var roleExist = await _roleManager.RoleExistsAsync("Admin");
@@ -84,12 +85,15 @@ namespace ISEN.DotNet.Library.Data
                 };
                 _ownerRepository.Update(owner);
                 _ownerRepository.Save();
+
                 #region equipments
 
                 var equipment1 = new Equipment()
                 {
+                    Owner = owner,
+                    Name = "Aladdin",
                     Type = "SolarPanel",
-                    MaxProduction = 400,
+                    MaxProduction = 0.4,
                     IdObject = "SolarPanel1",
                     Longitude = 15.0,
                     Latitude = 15.0,
@@ -97,8 +101,10 @@ namespace ISEN.DotNet.Library.Data
                 };
                 var equipment2 = new Equipment()
                 {
+                    Owner = owner,
+                    Name = "Ariel",
                     Type = "SolarPanel",
-                    MaxProduction = 400,
+                    MaxProduction = 0.4,
                     IdObject = "SolarPanel2",
                     Longitude = 15.0,
                     Latitude = 15.0,
@@ -106,8 +112,10 @@ namespace ISEN.DotNet.Library.Data
                 };
                 var equipment3 = new Equipment()
                 {
+                    Owner = owner,
+                    Name = "Baloo",
                     Type = "SolarPanel",
-                    MaxProduction = 400,
+                    MaxProduction = 0.4,
                     IdObject = "SolarPanel3",
                     Longitude = 15.0,
                     Latitude = 15.0,
@@ -115,8 +123,10 @@ namespace ISEN.DotNet.Library.Data
                 };
                 var equipment4 = new Equipment()
                 {
+                    Owner = owner,
+                    Name = "Bambi",
                     Type = "SolarPanel",
-                    MaxProduction = 400,
+                    MaxProduction = 0.4,
                     IdObject = "SolarPanel4",
                     Longitude = 15.0,
                     Latitude = 15.0,
@@ -124,8 +134,10 @@ namespace ISEN.DotNet.Library.Data
                 };
                 var equipment5 = new Equipment()
                 {
+                    Owner = owner,
+                    Name = "Cendrillon",
                     Type = "SolarPanel",
-                    MaxProduction = 400,
+                    MaxProduction = 0.4,
                     IdObject = "SolarPanel5",
                     Longitude = 15.0,
                     Latitude = 15.0,
@@ -133,8 +145,10 @@ namespace ISEN.DotNet.Library.Data
                 };
                 var equipment6 = new Equipment()
                 {
+                    Owner = owner,
+                    Name = "Dumbo",
                     Type = "SolarPanel",
-                    MaxProduction = 400,
+                    MaxProduction = 0.4,
                     IdObject = "SolarPanel6",
                     Longitude = 15.0,
                     Latitude = 15.0,
@@ -142,8 +156,10 @@ namespace ISEN.DotNet.Library.Data
                 };
                 var equipment7 = new Equipment()
                 {
+                    Owner = owner,
+                    Name = "Elsa",
                     Type = "SolarPanel",
-                    MaxProduction = 400,
+                    MaxProduction = 0.4,
                     IdObject = "SolarPanel7",
                     Longitude = 15.0,
                     Latitude = 15.0,
@@ -151,8 +167,10 @@ namespace ISEN.DotNet.Library.Data
                 };
                 var equipment8 = new Equipment()
                 {
+                    Owner = owner,
+                    Name = "Geppetto",
                     Type = "SolarPanel",
-                    MaxProduction = 400,
+                    MaxProduction = 0.4,
                     IdObject = "SolarPanel8",
                     Longitude = 15.0,
                     Latitude = 15.0,
@@ -161,7 +179,7 @@ namespace ISEN.DotNet.Library.Data
                 var equipment9 = new Equipment()
                 {
                     Type = "SolarPanel",
-                    MaxProduction = 400,
+                    MaxProduction = 0.4,
                     IdObject = "SolarPanel9",
                     Longitude = 15.0,
                     Latitude = 15.0,
@@ -170,7 +188,7 @@ namespace ISEN.DotNet.Library.Data
                 var equipment10 = new Equipment()
                 {
                     Type = "SolarPanel",
-                    MaxProduction = 400,
+                    MaxProduction = 0.4,
                     IdObject = "SolarPanel10",
                     Longitude = 15.0,
                     Latitude = 15.0,
@@ -306,7 +324,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment1.AddStatement(statement15);
                 var statement16 = new Statement()
                 {
-                    Production = 0.001 + GetRandomNumber(0, 0.001),
+                    Production = 0.001 + GetRandomNumber(0.005, 0.001),
                     Consommation = 1,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 07, 31, 49)
@@ -314,7 +332,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment1.AddStatement(statement16);
                 var statement17 = new Statement()
                 {
-                    Production = 0.001 + GetRandomNumber(0, 0.019),
+                    Production = 0.001 + GetRandomNumber(0.005, 0.001),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 08, 02, 07)
@@ -322,7 +340,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment1.AddStatement(statement17);
                 var statement18 = new Statement()
                 {
-                    Production = 0.015 + GetRandomNumber(0, 0.001),
+                    Production = 0.015 + GetRandomNumber(0.005, 0.001),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 08, 27, 35)
@@ -330,7 +348,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment1.AddStatement(statement18);
                 var statement19 = new Statement()
                 {
-                    Production = 0.010 + GetRandomNumber(0, 0.009),
+                    Production = 0.010 + GetRandomNumber(0.005, 0.01),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 09, 00, 00)
@@ -338,7 +356,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment1.AddStatement(statement19);
                 var statement20 = new Statement()
                 {
-                    Production = 0.012 + GetRandomNumber(0, 0.012),
+                    Production = 0.012 + GetRandomNumber(0.006, 0.012),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 09, 27, 42)
@@ -346,7 +364,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment1.AddStatement(statement20);
                 var statement21 = new Statement()
                 {
-                    Production = 0.018 + GetRandomNumber(0, 0.015),
+                    Production = 0.018 + GetRandomNumber(0.009, 0.012),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 09, 59, 03)
@@ -354,7 +372,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment1.AddStatement(statement21);
                 var statement22 = new Statement()
                 {
-                    Production = 0.056 + GetRandomNumber(0, 0.05),
+                    Production = 0.056 + GetRandomNumber(0.0025, 0.0035),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 10, 28, 13)
@@ -362,7 +380,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment1.AddStatement(statement22);
                 var statement23 = new Statement()
                 {
-                    Production = 0.084 + GetRandomNumber(0, 0.06),
+                    Production = 0.084 + GetRandomNumber(0.01, 0.0020),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 10, 59, 59)
@@ -370,7 +388,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment1.AddStatement(statement23);
                 var statement24 = new Statement()
                 {
-                    Production = 0.06 + GetRandomNumber(0, 0.06),
+                    Production = 0.06 + GetRandomNumber(0.01, 0.0020),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 11, 34, 15)
@@ -378,7 +396,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment1.AddStatement(statement24);
                 var statement25 = new Statement()
                 {
-                    Production = 0.08 + GetRandomNumber(0, 0.05),
+                    Production = 0.08 + GetRandomNumber(0.0025, 0.0035),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 11, 58, 39)
@@ -386,7 +404,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment1.AddStatement(statement25);
                 var statement26 = new Statement()
                 {
-                    Production = 0.08 + GetRandomNumber(0, 0.08),
+                    Production = 0.08 + GetRandomNumber(0.01, 0.0006),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 12, 32, 57)
@@ -394,7 +412,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment1.AddStatement(statement26);
                 var statement27 = new Statement()
                 {
-                    Production = 0.08 + GetRandomNumber(0, 0.08),
+                    Production = 0.08 + GetRandomNumber(0.01, 0.0006),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 12, 52, 49)
@@ -402,7 +420,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment1.AddStatement(statement27);
                 var statement28 = new Statement()
                 {
-                    Production = 0.10 + GetRandomNumber(0, 0.10),
+                    Production = 0.10 + GetRandomNumber(0.05, 0.09),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 13, 24, 33)
@@ -410,7 +428,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment1.AddStatement(statement28);
                 var statement29 = new Statement()
                 {
-                    Production = 0.14 + GetRandomNumber(0, 0.10),
+                    Production = 0.14 + GetRandomNumber(0.05, 0.09),
                     Consommation = 0.5,
                     OverProduction = 0.2,
                     Date = new DateTime(2017, 06, 16, 13, 51, 47)
@@ -418,7 +436,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment1.AddStatement(statement29);
                 var statement30 = new Statement()
                 {
-                    Production = 0.14 + GetRandomNumber(0, 0.12),
+                    Production = 0.14 + GetRandomNumber(0.05, 0.09),
                     Consommation = 0.5,
                     OverProduction = 0.2,
                     Date = new DateTime(2017, 06, 16, 14, 21, 12)
@@ -426,7 +444,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment1.AddStatement(statement30);
                 var statement31 = new Statement()
                 {
-                    Production = 0.16 + GetRandomNumber(0, 0.16),
+                    Production = 0.16 + GetRandomNumber(0.05, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.3,
                     Date = new DateTime(2017, 06, 16, 14, 59, 47)
@@ -434,7 +452,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment1.AddStatement(statement31);
                 var statement32 = new Statement()
                 {
-                    Production = 0.250 + GetRandomNumber(0, 0.15),
+                    Production = 0.250 + GetRandomNumber(0.08, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.75,
                     Date = new DateTime(2017, 06, 16, 15, 29, 53)
@@ -442,7 +460,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment1.AddStatement(statement32);
                 var statement33 = new Statement()
                 {
-                    Production = 0.250 + GetRandomNumber(0, 0.15),
+                    Production = 0.250 + GetRandomNumber(0.08, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.75,
                     Date = new DateTime(2017, 06, 16, 15, 57, 38)
@@ -450,7 +468,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment1.AddStatement(statement33);
                 var statement34 = new Statement()
                 {
-                    Production = 0.240 + GetRandomNumber(0, 0.15),
+                    Production = 0.240 + GetRandomNumber(0.08, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.7,
                     Date = new DateTime(2017, 06, 16, 16, 33, 12)
@@ -458,7 +476,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment1.AddStatement(statement34);
                 var statement35 = new Statement()
                 {
-                    Production = 0.220 + GetRandomNumber(0, 0.16),
+                    Production = 0.220 + GetRandomNumber(0.05, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.6,
                     Date = new DateTime(2017, 06, 16, 16, 59, 01)
@@ -466,7 +484,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment1.AddStatement(statement35);
                 var statement36 = new Statement()
                 {
-                    Production = 0.220 + GetRandomNumber(0, 0.16),
+                    Production = 0.220 + GetRandomNumber(0.05, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.6,
                     Date = new DateTime(2017, 06, 16, 17, 23, 07)
@@ -474,7 +492,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment1.AddStatement(statement36);
                 var statement37 = new Statement()
                 {
-                    Production = 0.18 + GetRandomNumber(0, 0.08),
+                    Production = 0.18 + GetRandomNumber(0.01, 0.0006),
                     Consommation = 0.5,
                     OverProduction = 0.4,
                     Date = new DateTime(2017, 06, 16, 17, 57, 31)
@@ -482,7 +500,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment1.AddStatement(statement37);
                 var statement38 = new Statement()
                 {
-                    Production = 0.14 + GetRandomNumber(0, 0.05),
+                    Production = 0.14 + GetRandomNumber(0.0025, 0.0035),
                     Consommation = 1,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 18, 37, 46)
@@ -490,7 +508,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment1.AddStatement(statement38);
                 var statement39 = new Statement()
                 {
-                    Production = 0.12 + GetRandomNumber(0, 0.09),
+                    Production = 0.12 + GetRandomNumber(0.01, 0.08),
                     Consommation = 1,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 18, 51, 12)
@@ -498,7 +516,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment1.AddStatement(statement39);
                 var statement40 = new Statement()
                 {
-                    Production = 0.10 + GetRandomNumber(0, 0.06),
+                    Production = 0.10 + GetRandomNumber(0.01, 0.0020),
                     Consommation = 2,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 19, 21, 56)
@@ -506,7 +524,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment1.AddStatement(statement40);
                 var statement41 = new Statement()
                 {
-                    Production = 0.08 + GetRandomNumber(0, 0.06),
+                    Production = 0.08 + GetRandomNumber(0.01, 0.0020),
                     Consommation = 2.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 19, 51, 13)
@@ -514,7 +532,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment1.AddStatement(statement41);
                 var statement42 = new Statement()
                 {
-                    Production = 0.04 + GetRandomNumber(0, 0.015),
+                    Production = 0.04 + GetRandomNumber(0.009, 0.012),
                     Consommation = 2.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 20, 30, 01)
@@ -522,7 +540,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment1.AddStatement(statement42);
                 var statement43 = new Statement()
                 {
-                    Production = 0.04 + GetRandomNumber(0, 0.015),
+                    Production = 0.04 + GetRandomNumber(0.009, 0.012),
                     Consommation = 3,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 20, 55, 57)
@@ -546,7 +564,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment1.AddStatement(statement45);
                 var statement46 = new Statement()
                 {
-                    Production = 0.024 + GetRandomNumber(0, 0.019),
+                    Production = 0.024 + GetRandomNumber(0.005, 0.001),
                     Consommation = 1,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 22, 29, 57)
@@ -703,7 +721,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment2.AddStatement(statement62);
                 var statement63 = new Statement()
                 {
-                    Production = 0.001 + GetRandomNumber(0, 0.001),
+                    Production = 0.001 + GetRandomNumber(0.005, 0.001),
                     Consommation = 1,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 07, 31, 49)
@@ -711,7 +729,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment2.AddStatement(statement63);
                 var statement64 = new Statement()
                 {
-                    Production = 0.001 + GetRandomNumber(0, 0.019),
+                    Production = 0.001 + GetRandomNumber(0.005, 0.001),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 08, 02, 07)
@@ -719,7 +737,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment2.AddStatement(statement64);
                 var statement65 = new Statement()
                 {
-                    Production = 0.015 + GetRandomNumber(0, 0.001),
+                    Production = 0.015 + GetRandomNumber(0.005, 0.001),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 08, 27, 35)
@@ -727,7 +745,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment2.AddStatement(statement65);
                 var statement66 = new Statement()
                 {
-                    Production = 0.010 + GetRandomNumber(0, 0.009),
+                    Production = 0.010 + GetRandomNumber(0.005, 0.01),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 09, 00, 00)
@@ -735,7 +753,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment2.AddStatement(statement66);
                 var statement67 = new Statement()
                 {
-                    Production = 0.012 + GetRandomNumber(0, 0.012),
+                    Production = 0.012 + GetRandomNumber(0.006, 0.012),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 09, 27, 42)
@@ -743,7 +761,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment2.AddStatement(statement67);
                 var statement68 = new Statement()
                 {
-                    Production = 0.018 + GetRandomNumber(0, 0.015),
+                    Production = 0.018 + GetRandomNumber(0.009, 0.012),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 09, 59, 03)
@@ -751,7 +769,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment2.AddStatement(statement68);
                 var statement69 = new Statement()
                 {
-                    Production = 0.056 + GetRandomNumber(0, 0.05),
+                    Production = 0.056 + GetRandomNumber(0.0025, 0.0035),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 10, 28, 13)
@@ -759,7 +777,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment2.AddStatement(statement69);
                 var statement70 = new Statement()
                 {
-                    Production = 0.084 + GetRandomNumber(0, 0.06),
+                    Production = 0.084 + GetRandomNumber(0.01, 0.0020),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 10, 59, 59)
@@ -767,7 +785,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment2.AddStatement(statement70);
                 var statement71 = new Statement()
                 {
-                    Production = 0.06 + GetRandomNumber(0, 0.06),
+                    Production = 0.06 + GetRandomNumber(0.01, 0.0020),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 11, 34, 15)
@@ -775,7 +793,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment2.AddStatement(statement71);
                 var statement72 = new Statement()
                 {
-                    Production = 0.08 + GetRandomNumber(0, 0.05),
+                    Production = 0.08 + GetRandomNumber(0.0025, 0.0035),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 11, 58, 39)
@@ -783,7 +801,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment2.AddStatement(statement72);
                 var statement73 = new Statement()
                 {
-                    Production = 0.08 + GetRandomNumber(0, 0.08),
+                    Production = 0.08 + GetRandomNumber(0.01, 0.0006),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 12, 32, 57)
@@ -791,7 +809,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment2.AddStatement(statement73);
                 var statement74 = new Statement()
                 {
-                    Production = 0.08 + GetRandomNumber(0, 0.08),
+                    Production = 0.08 + GetRandomNumber(0.01, 0.0006),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 12, 52, 49)
@@ -799,7 +817,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment2.AddStatement(statement74);
                 var statement75 = new Statement()
                 {
-                    Production = 0.10 + GetRandomNumber(0, 0.10),
+                    Production = 0.10 + GetRandomNumber(0.05, 0.09),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 13, 24, 33)
@@ -807,7 +825,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment2.AddStatement(statement75);
                 var statement76 = new Statement()
                 {
-                    Production = 0.14 + GetRandomNumber(0, 0.10),
+                    Production = 0.14 + GetRandomNumber(0.05, 0.09),
                     Consommation = 0.5,
                     OverProduction = 0.2,
                     Date = new DateTime(2017, 06, 16, 13, 51, 47)
@@ -815,7 +833,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment2.AddStatement(statement76);
                 var statement77 = new Statement()
                 {
-                    Production = 0.14 + GetRandomNumber(0, 0.12),
+                    Production = 0.14 + GetRandomNumber(0.05, 0.09),
                     Consommation = 0.5,
                     OverProduction = 0.2,
                     Date = new DateTime(2017, 06, 16, 14, 21, 12)
@@ -823,7 +841,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment2.AddStatement(statement77);
                 var statement78 = new Statement()
                 {
-                    Production = 0.16 + GetRandomNumber(0, 0.16),
+                    Production = 0.16 + GetRandomNumber(0.05, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.3,
                     Date = new DateTime(2017, 06, 16, 14, 59, 47)
@@ -831,7 +849,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment2.AddStatement(statement78);
                 var statement79 = new Statement()
                 {
-                    Production = 0.250 + GetRandomNumber(0, 0.15),
+                    Production = 0.250 + GetRandomNumber(0.08, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.75,
                     Date = new DateTime(2017, 06, 16, 15, 29, 53)
@@ -839,7 +857,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment2.AddStatement(statement79);
                 var statement80 = new Statement()
                 {
-                    Production = 0.250 + GetRandomNumber(0, 0.15),
+                    Production = 0.250 + GetRandomNumber(0.08, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.75,
                     Date = new DateTime(2017, 06, 16, 15, 57, 38)
@@ -847,7 +865,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment2.AddStatement(statement80);
                 var statement81 = new Statement()
                 {
-                    Production = 0.240 + GetRandomNumber(0, 0.15),
+                    Production = 0.240 + GetRandomNumber(0.08, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.7,
                     Date = new DateTime(2017, 06, 16, 16, 33, 12)
@@ -855,7 +873,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment2.AddStatement(statement81);
                 var statement82 = new Statement()
                 {
-                    Production = 0.220 + GetRandomNumber(0, 0.16),
+                    Production = 0.220 + GetRandomNumber(0.05, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.6,
                     Date = new DateTime(2017, 06, 16, 16, 59, 01)
@@ -863,7 +881,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment2.AddStatement(statement82);
                 var statement83 = new Statement()
                 {
-                    Production = 0.220 + GetRandomNumber(0, 0.16),
+                    Production = 0.220 + GetRandomNumber(0.05, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.6,
                     Date = new DateTime(2017, 06, 16, 17, 23, 07)
@@ -871,7 +889,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment2.AddStatement(statement83);
                 var statement84 = new Statement()
                 {
-                    Production = 0.18 + GetRandomNumber(0, 0.08),
+                    Production = 0.18 + GetRandomNumber(0.01, 0.0006),
                     Consommation = 0.5,
                     OverProduction = 0.4,
                     Date = new DateTime(2017, 06, 16, 17, 57, 31)
@@ -879,7 +897,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment2.AddStatement(statement84);
                 var statement85 = new Statement()
                 {
-                    Production = 0.14 + GetRandomNumber(0, 0.05),
+                    Production = 0.14 + GetRandomNumber(0.0025, 0.0035),
                     Consommation = 1,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 18, 37, 46)
@@ -887,7 +905,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment2.AddStatement(statement85);
                 var statement86 = new Statement()
                 {
-                    Production = 0.12 + GetRandomNumber(0, 0.09),
+                    Production = 0.12 + GetRandomNumber(0.01, 0.08),
                     Consommation = 1,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 18, 51, 12)
@@ -895,7 +913,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment2.AddStatement(statement86);
                 var statement87 = new Statement()
                 {
-                    Production = 0.10 + GetRandomNumber(0, 0.06),
+                    Production = 0.10 + GetRandomNumber(0.01, 0.0020),
                     Consommation = 2,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 19, 21, 56)
@@ -903,7 +921,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment2.AddStatement(statement87);
                 var statement88 = new Statement()
                 {
-                    Production = 0.08 + GetRandomNumber(0, 0.06),
+                    Production = 0.08 + GetRandomNumber(0.01, 0.0020),
                     Consommation = 2.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 19, 51, 13)
@@ -911,7 +929,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment2.AddStatement(statement88);
                 var statement89 = new Statement()
                 {
-                    Production = 0.04 + GetRandomNumber(0, 0.015),
+                    Production = 0.04 + GetRandomNumber(0.009, 0.012),
                     Consommation = 2.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 20, 30, 01)
@@ -919,7 +937,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment2.AddStatement(statement89);
                 var statement90 = new Statement()
                 {
-                    Production = 0.04 + GetRandomNumber(0, 0.015),
+                    Production = 0.04 + GetRandomNumber(0.009, 0.012),
                     Consommation = 3,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 20, 55, 57)
@@ -943,7 +961,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment2.AddStatement(statement92);
                 var statement93 = new Statement()
                 {
-                    Production = 0.024 + GetRandomNumber(0, 0.019),
+                    Production = 0.024 + GetRandomNumber(0.005, 0.001),
                     Consommation = 1,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 22, 29, 57)
@@ -1100,7 +1118,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment3.AddStatement(statement110);
                 var statement111 = new Statement()
                 {
-                    Production = 0.001 + GetRandomNumber(0, 0.001),
+                    Production = 0.001 + GetRandomNumber(0.005, 0.001),
                     Consommation = 1,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 07, 31, 49)
@@ -1108,7 +1126,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment3.AddStatement(statement111);
                 var statement112 = new Statement()
                 {
-                    Production = 0.001 + GetRandomNumber(0, 0.019),
+                    Production = 0.001 + GetRandomNumber(0.005, 0.001),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 08, 02, 07)
@@ -1116,7 +1134,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment3.AddStatement(statement112);
                 var statement113 = new Statement()
                 {
-                    Production = 0.015 + GetRandomNumber(0, 0.001),
+                    Production = 0.015 + GetRandomNumber(0.005, 0.001),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 08, 27, 35)
@@ -1124,7 +1142,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment3.AddStatement(statement113);
                 var statement114 = new Statement()
                 {
-                    Production = 0.010 + GetRandomNumber(0, 0.009),
+                    Production = 0.010 + GetRandomNumber(0.005, 0.01),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 09, 00, 00)
@@ -1132,7 +1150,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment3.AddStatement(statement114);
                 var statement115 = new Statement()
                 {
-                    Production = 0.012 + GetRandomNumber(0, 0.012),
+                    Production = 0.012 + GetRandomNumber(0.006, 0.012),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 09, 27, 42)
@@ -1140,7 +1158,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment3.AddStatement(statement115);
                 var statement116 = new Statement()
                 {
-                    Production = 0.018 + GetRandomNumber(0, 0.015),
+                    Production = 0.018 + GetRandomNumber(0.009, 0.012),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 09, 59, 03)
@@ -1148,7 +1166,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment3.AddStatement(statement116);
                 var statement117 = new Statement()
                 {
-                    Production = 0.056 + GetRandomNumber(0, 0.05),
+                    Production = 0.056 + GetRandomNumber(0.0025, 0.0035),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 10, 28, 13)
@@ -1156,7 +1174,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment3.AddStatement(statement117);
                 var statement118 = new Statement()
                 {
-                    Production = 0.084 + GetRandomNumber(0, 0.06),
+                    Production = 0.084 + GetRandomNumber(0.01, 0.0020),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 10, 59, 59)
@@ -1164,7 +1182,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment3.AddStatement(statement118);
                 var statement119 = new Statement()
                 {
-                    Production = 0.06 + GetRandomNumber(0, 0.06),
+                    Production = 0.06 + GetRandomNumber(0.01, 0.0020),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 11, 34, 15)
@@ -1172,7 +1190,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment3.AddStatement(statement119);
                 var statement120 = new Statement()
                 {
-                    Production = 0.08 + GetRandomNumber(0, 0.05),
+                    Production = 0.08 + GetRandomNumber(0.0025, 0.0035),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 11, 58, 39)
@@ -1180,7 +1198,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment3.AddStatement(statement120);
                 var statement121 = new Statement()
                 {
-                    Production = 0.08 + GetRandomNumber(0, 0.08),
+                    Production = 0.08 + GetRandomNumber(0.01, 0.0006),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 12, 32, 57)
@@ -1188,7 +1206,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment3.AddStatement(statement121);
                 var statement122 = new Statement()
                 {
-                    Production = 0.08 + GetRandomNumber(0, 0.08),
+                    Production = 0.08 + GetRandomNumber(0.01, 0.0006),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 12, 52, 49)
@@ -1196,7 +1214,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment3.AddStatement(statement122);
                 var statement123 = new Statement()
                 {
-                    Production = 0.10 + GetRandomNumber(0, 0.10),
+                    Production = 0.10 + GetRandomNumber(0.05, 0.09),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 13, 24, 33)
@@ -1204,7 +1222,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment3.AddStatement(statement123);
                 var statement124 = new Statement()
                 {
-                    Production = 0.14 + GetRandomNumber(0, 0.10),
+                    Production = 0.14 + GetRandomNumber(0.05, 0.09),
                     Consommation = 0.5,
                     OverProduction = 0.2,
                     Date = new DateTime(2017, 06, 16, 13, 51, 47)
@@ -1212,7 +1230,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment3.AddStatement(statement124);
                 var statement125 = new Statement()
                 {
-                    Production = 0.14 + GetRandomNumber(0, 0.12),
+                    Production = 0.14 + GetRandomNumber(0.05, 0.09),
                     Consommation = 0.5,
                     OverProduction = 0.2,
                     Date = new DateTime(2017, 06, 16, 14, 21, 12)
@@ -1220,7 +1238,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment3.AddStatement(statement125);
                 var statement126 = new Statement()
                 {
-                    Production = 0.16 + GetRandomNumber(0, 0.16),
+                    Production = 0.16 + GetRandomNumber(0.05, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.3,
                     Date = new DateTime(2017, 06, 16, 14, 59, 47)
@@ -1228,7 +1246,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment3.AddStatement(statement126);
                 var statement127 = new Statement()
                 {
-                    Production = 0.250 + GetRandomNumber(0, 0.15),
+                    Production = 0.250 + GetRandomNumber(0.08, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.75,
                     Date = new DateTime(2017, 06, 16, 15, 29, 53)
@@ -1236,7 +1254,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment3.AddStatement(statement127);
                 var statement128 = new Statement()
                 {
-                    Production = 0.250 + GetRandomNumber(0, 0.15),
+                    Production = 0.250 + GetRandomNumber(0.08, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.75,
                     Date = new DateTime(2017, 06, 16, 15, 57, 38)
@@ -1244,7 +1262,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment3.AddStatement(statement128);
                 var statement129 = new Statement()
                 {
-                    Production = 0.240 + GetRandomNumber(0, 0.15),
+                    Production = 0.240 + GetRandomNumber(0.08, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.7,
                     Date = new DateTime(2017, 06, 16, 16, 33, 12)
@@ -1252,7 +1270,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment3.AddStatement(statement129);
                 var statement130 = new Statement()
                 {
-                    Production = 0.220 + GetRandomNumber(0, 0.16),
+                    Production = 0.220 + GetRandomNumber(0.05, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.6,
                     Date = new DateTime(2017, 06, 16, 16, 59, 01)
@@ -1260,7 +1278,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment3.AddStatement(statement130);
                 var statement131 = new Statement()
                 {
-                    Production = 0.220 + GetRandomNumber(0, 0.16),
+                    Production = 0.220 + GetRandomNumber(0.05, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.6,
                     Date = new DateTime(2017, 06, 16, 17, 23, 07)
@@ -1268,7 +1286,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment3.AddStatement(statement131);
                 var statement132 = new Statement()
                 {
-                    Production = 0.18 + GetRandomNumber(0, 0.08),
+                    Production = 0.18 + GetRandomNumber(0.01, 0.0006),
                     Consommation = 0.5,
                     OverProduction = 0.4,
                     Date = new DateTime(2017, 06, 16, 17, 57, 31)
@@ -1276,7 +1294,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment3.AddStatement(statement132);
                 var statement133 = new Statement()
                 {
-                    Production = 0.14 + GetRandomNumber(0, 0.05),
+                    Production = 0.14 + GetRandomNumber(0.0025, 0.0035),
                     Consommation = 1,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 18, 37, 46)
@@ -1284,7 +1302,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment3.AddStatement(statement133);
                 var statement134 = new Statement()
                 {
-                    Production = 0.12 + GetRandomNumber(0, 0.09),
+                    Production = 0.12 + GetRandomNumber(0.01, 0.08),
                     Consommation = 1,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 18, 51, 12)
@@ -1292,7 +1310,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment3.AddStatement(statement134);
                 var statement135 = new Statement()
                 {
-                    Production = 0.10 + GetRandomNumber(0, 0.06),
+                    Production = 0.10 + GetRandomNumber(0.01, 0.0020),
                     Consommation = 2,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 19, 21, 56)
@@ -1300,7 +1318,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment3.AddStatement(statement135);
                 var statement136 = new Statement()
                 {
-                    Production = 0.08 + GetRandomNumber(0, 0.06),
+                    Production = 0.08 + GetRandomNumber(0.01, 0.0020),
                     Consommation = 2.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 19, 51, 13)
@@ -1308,7 +1326,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment3.AddStatement(statement136);
                 var statement137 = new Statement()
                 {
-                    Production = 0.04 + GetRandomNumber(0, 0.015),
+                    Production = 0.04 + GetRandomNumber(0.009, 0.012),
                     Consommation = 2.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 20, 30, 01)
@@ -1316,7 +1334,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment3.AddStatement(statement137);
                 var statement138 = new Statement()
                 {
-                    Production = 0.04 + GetRandomNumber(0, 0.015),
+                    Production = 0.04 + GetRandomNumber(0.009, 0.012),
                     Consommation = 3,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 20, 55, 57)
@@ -1340,7 +1358,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment3.AddStatement(statement140);
                 var statement141 = new Statement()
                 {
-                    Production = 0.024 + GetRandomNumber(0, 0.019),
+                    Production = 0.024 + GetRandomNumber(0.005, 0.001),
                     Consommation = 1,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 22, 29, 57)
@@ -1502,7 +1520,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment4.AddStatement(statement158);
                 var statement159 = new Statement()
                 {
-                    Production = 0.001 + GetRandomNumber(0, 0.001),
+                    Production = 0.001 + GetRandomNumber(0.005, 0.001),
                     Consommation = 1,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 07, 31, 49)
@@ -1510,7 +1528,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment4.AddStatement(statement159);
                 var statement160 = new Statement()
                 {
-                    Production = 0.001 + GetRandomNumber(0, 0.019),
+                    Production = 0.001 + GetRandomNumber(0.005, 0.001),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 08, 02, 07)
@@ -1518,7 +1536,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment4.AddStatement(statement160);
                 var statement161 = new Statement()
                 {
-                    Production = 0.015 + GetRandomNumber(0, 0.001),
+                    Production = 0.015 + GetRandomNumber(0.005, 0.001),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 08, 27, 35)
@@ -1526,7 +1544,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment4.AddStatement(statement161);
                 var statement162 = new Statement()
                 {
-                    Production = 0.010 + GetRandomNumber(0, 0.009),
+                    Production = 0.010 + GetRandomNumber(0.005, 0.01),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 09, 00, 00)
@@ -1534,7 +1552,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment4.AddStatement(statement162);
                 var statement163 = new Statement()
                 {
-                    Production = 0.012 + GetRandomNumber(0, 0.012),
+                    Production = 0.012 + GetRandomNumber(0.006, 0.012),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 09, 27, 42)
@@ -1542,7 +1560,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment4.AddStatement(statement163);
                 var statement164 = new Statement()
                 {
-                    Production = 0.018 + GetRandomNumber(0, 0.015),
+                    Production = 0.018 + GetRandomNumber(0.009, 0.012),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 09, 59, 03)
@@ -1550,7 +1568,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment4.AddStatement(statement164);
                 var statement165 = new Statement()
                 {
-                    Production = 0.056 + GetRandomNumber(0, 0.05),
+                    Production = 0.056 + GetRandomNumber(0.0025, 0.0035),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 10, 28, 13)
@@ -1558,7 +1576,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment4.AddStatement(statement165);
                 var statement166 = new Statement()
                 {
-                    Production = 0.084 + GetRandomNumber(0, 0.06),
+                    Production = 0.084 + GetRandomNumber(0.01, 0.0020),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 10, 59, 59)
@@ -1566,7 +1584,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment4.AddStatement(statement166);
                 var statement167 = new Statement()
                 {
-                    Production = 0.06 + GetRandomNumber(0, 0.06),
+                    Production = 0.06 + GetRandomNumber(0.01, 0.0020),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 11, 34, 15)
@@ -1574,7 +1592,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment4.AddStatement(statement167);
                 var statement168 = new Statement()
                 {
-                    Production = 0.08 + GetRandomNumber(0, 0.05),
+                    Production = 0.08 + GetRandomNumber(0.0025, 0.0035),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 11, 58, 39)
@@ -1582,7 +1600,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment4.AddStatement(statement168);
                 var statement169 = new Statement()
                 {
-                    Production = 0.08 + GetRandomNumber(0, 0.08),
+                    Production = 0.08 + GetRandomNumber(0.01, 0.0006),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 12, 32, 57)
@@ -1590,7 +1608,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment4.AddStatement(statement169);
                 var statement170 = new Statement()
                 {
-                    Production = 0.08 + GetRandomNumber(0, 0.08),
+                    Production = 0.08 + GetRandomNumber(0.01, 0.0006),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 12, 52, 49)
@@ -1598,7 +1616,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment4.AddStatement(statement170);
                 var statement171 = new Statement()
                 {
-                    Production = 0.10 + GetRandomNumber(0, 0.10),
+                    Production = 0.10 + GetRandomNumber(0.05, 0.09),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 13, 24, 33)
@@ -1606,7 +1624,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment4.AddStatement(statement171);
                 var statement172 = new Statement()
                 {
-                    Production = 0.14 + GetRandomNumber(0, 0.10),
+                    Production = 0.14 + GetRandomNumber(0.05, 0.09),
                     Consommation = 0.5,
                     OverProduction = 0.2,
                     Date = new DateTime(2017, 06, 16, 13, 51, 47)
@@ -1614,7 +1632,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment4.AddStatement(statement172);
                 var statement173 = new Statement()
                 {
-                    Production = 0.14 + GetRandomNumber(0, 0.12),
+                    Production = 0.14 + GetRandomNumber(0.05, 0.09),
                     Consommation = 0.5,
                     OverProduction = 0.2,
                     Date = new DateTime(2017, 06, 16, 14, 21, 12)
@@ -1622,7 +1640,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment4.AddStatement(statement173);
                 var statement174 = new Statement()
                 {
-                    Production = 0.16 + GetRandomNumber(0, 0.16),
+                    Production = 0.16 + GetRandomNumber(0.05, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.3,
                     Date = new DateTime(2017, 06, 16, 14, 59, 47)
@@ -1630,7 +1648,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment4.AddStatement(statement174);
                 var statement175 = new Statement()
                 {
-                    Production = 0.250 + GetRandomNumber(0, 0.15),
+                    Production = 0.250 + GetRandomNumber(0.08, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.75,
                     Date = new DateTime(2017, 06, 16, 15, 29, 53)
@@ -1638,7 +1656,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment4.AddStatement(statement175);
                 var statement176 = new Statement()
                 {
-                    Production = 0.250 + GetRandomNumber(0, 0.15),
+                    Production = 0.250 + GetRandomNumber(0.08, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.75,
                     Date = new DateTime(2017, 06, 16, 15, 57, 38)
@@ -1646,7 +1664,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment4.AddStatement(statement176);
                 var statement177 = new Statement()
                 {
-                    Production = 0.240 + GetRandomNumber(0, 0.15),
+                    Production = 0.240 + GetRandomNumber(0.08, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.7,
                     Date = new DateTime(2017, 06, 16, 16, 33, 12)
@@ -1654,7 +1672,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment4.AddStatement(statement177);
                 var statement178 = new Statement()
                 {
-                    Production = 0.220 + GetRandomNumber(0, 0.16),
+                    Production = 0.220 + GetRandomNumber(0.05, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.6,
                     Date = new DateTime(2017, 06, 16, 16, 59, 01)
@@ -1662,7 +1680,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment4.AddStatement(statement178);
                 var statement179 = new Statement()
                 {
-                    Production = 0.220 + GetRandomNumber(0, 0.16),
+                    Production = 0.220 + GetRandomNumber(0.05, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.6,
                     Date = new DateTime(2017, 06, 16, 17, 23, 07)
@@ -1670,7 +1688,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment4.AddStatement(statement179);
                 var statement180 = new Statement()
                 {
-                    Production = 0.18 + GetRandomNumber(0, 0.08),
+                    Production = 0.18 + GetRandomNumber(0.01, 0.0006),
                     Consommation = 0.5,
                     OverProduction = 0.4,
                     Date = new DateTime(2017, 06, 16, 17, 57, 31)
@@ -1678,7 +1696,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment4.AddStatement(statement180);
                 var statement181 = new Statement()
                 {
-                    Production = 0.14 + GetRandomNumber(0, 0.05),
+                    Production = 0.14 + GetRandomNumber(0.0025, 0.0035),
                     Consommation = 1,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 18, 37, 46)
@@ -1686,7 +1704,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment4.AddStatement(statement181);
                 var statement182 = new Statement()
                 {
-                    Production = 0.12 + GetRandomNumber(0, 0.09),
+                    Production = 0.12 + GetRandomNumber(0.01, 0.08),
                     Consommation = 1,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 18, 51, 12)
@@ -1694,7 +1712,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment4.AddStatement(statement182);
                 var statement183 = new Statement()
                 {
-                    Production = 0.10 + GetRandomNumber(0, 0.06),
+                    Production = 0.10 + GetRandomNumber(0.01, 0.0020),
                     Consommation = 2,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 19, 21, 56)
@@ -1702,7 +1720,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment4.AddStatement(statement183);
                 var statement184 = new Statement()
                 {
-                    Production = 0.08 + GetRandomNumber(0, 0.06),
+                    Production = 0.08 + GetRandomNumber(0.01, 0.0020),
                     Consommation = 2.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 19, 51, 13)
@@ -1710,7 +1728,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment4.AddStatement(statement184);
                 var statement185 = new Statement()
                 {
-                    Production = 0.04 + GetRandomNumber(0, 0.015),
+                    Production = 0.04 + GetRandomNumber(0.009, 0.012),
                     Consommation = 2.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 20, 30, 01)
@@ -1718,7 +1736,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment4.AddStatement(statement185);
                 var statement186 = new Statement()
                 {
-                    Production = 0.04 + GetRandomNumber(0, 0.015),
+                    Production = 0.04 + GetRandomNumber(0.009, 0.012),
                     Consommation = 3,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 20, 55, 57)
@@ -1742,7 +1760,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment4.AddStatement(statement188);
                 var statement189 = new Statement()
                 {
-                    Production = 0.024 + GetRandomNumber(0, 0.019),
+                    Production = 0.024 + GetRandomNumber(0.005, 0.001),
                     Consommation = 1,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 22, 29, 57)
@@ -1904,7 +1922,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment7.AddStatement(statement302);
                 var statement303 = new Statement()
                 {
-                    Production = 0.001 + GetRandomNumber(0, 0.001),
+                    Production = 0.001 + GetRandomNumber(0.005, 0.001),
                     Consommation = 1,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 07, 31, 49)
@@ -1912,7 +1930,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment7.AddStatement(statement303);
                 var statement304 = new Statement()
                 {
-                    Production = 0.001 + GetRandomNumber(0, 0.019),
+                    Production = 0.001 + GetRandomNumber(0.005, 0.001),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 08, 02, 07)
@@ -1920,7 +1938,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment7.AddStatement(statement304);
                 var statement305 = new Statement()
                 {
-                    Production = 0.015 + GetRandomNumber(0, 0.001),
+                    Production = 0.015 + GetRandomNumber(0.005, 0.001),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 08, 27, 35)
@@ -1928,7 +1946,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment7.AddStatement(statement305);
                 var statement306 = new Statement()
                 {
-                    Production = 0.010 + GetRandomNumber(0, 0.009),
+                    Production = 0.010 + GetRandomNumber(0.005, 0.01),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 09, 00, 00)
@@ -1936,7 +1954,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment7.AddStatement(statement306);
                 var statement307 = new Statement()
                 {
-                    Production = 0.012 + GetRandomNumber(0, 0.012),
+                    Production = 0.012 + GetRandomNumber(0.006, 0.012),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 09, 27, 42)
@@ -1944,7 +1962,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment7.AddStatement(statement307);
                 var statement308 = new Statement()
                 {
-                    Production = 0.018 + GetRandomNumber(0, 0.015),
+                    Production = 0.018 + GetRandomNumber(0.009, 0.012),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 09, 59, 03)
@@ -1952,7 +1970,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment7.AddStatement(statement308);
                 var statement309 = new Statement()
                 {
-                    Production = 0.056 + GetRandomNumber(0, 0.05),
+                    Production = 0.056 + GetRandomNumber(0.0025, 0.0035),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 10, 28, 13)
@@ -1960,7 +1978,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment7.AddStatement(statement309);
                 var statement310 = new Statement()
                 {
-                    Production = 0.084 + GetRandomNumber(0, 0.06),
+                    Production = 0.084 + GetRandomNumber(0.01, 0.0020),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 10, 59, 59)
@@ -1968,7 +1986,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment7.AddStatement(statement310);
                 var statement311 = new Statement()
                 {
-                    Production = 0.06 + GetRandomNumber(0, 0.06),
+                    Production = 0.06 + GetRandomNumber(0.01, 0.0020),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 11, 34, 15)
@@ -1976,7 +1994,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment7.AddStatement(statement311);
                 var statement312 = new Statement()
                 {
-                    Production = 0.08 + GetRandomNumber(0, 0.05),
+                    Production = 0.08 + GetRandomNumber(0.0025, 0.0035),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 11, 58, 39)
@@ -1984,7 +2002,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment7.AddStatement(statement312);
                 var statement313 = new Statement()
                 {
-                    Production = 0.08 + GetRandomNumber(0, 0.08),
+                    Production = 0.08 + GetRandomNumber(0.01, 0.0006),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 12, 32, 57)
@@ -1992,7 +2010,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment7.AddStatement(statement313);
                 var statement314 = new Statement()
                 {
-                    Production = 0.08 + GetRandomNumber(0, 0.08),
+                    Production = 0.08 + GetRandomNumber(0.01, 0.0006),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 12, 52, 49)
@@ -2000,7 +2018,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment7.AddStatement(statement314);
                 var statement315 = new Statement()
                 {
-                    Production = 0.10 + GetRandomNumber(0, 0.10),
+                    Production = 0.10 + GetRandomNumber(0.05, 0.09),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 13, 24, 33)
@@ -2008,7 +2026,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment7.AddStatement(statement315);
                 var statement316 = new Statement()
                 {
-                    Production = 0.14 + GetRandomNumber(0, 0.10),
+                    Production = 0.14 + GetRandomNumber(0.05, 0.09),
                     Consommation = 0.5,
                     OverProduction = 0.2,
                     Date = new DateTime(2017, 06, 16, 13, 51, 47)
@@ -2016,7 +2034,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment7.AddStatement(statement316);
                 var statement317 = new Statement()
                 {
-                    Production = 0.14 + GetRandomNumber(0, 0.12),
+                    Production = 0.14 + GetRandomNumber(0.05, 0.09),
                     Consommation = 0.5,
                     OverProduction = 0.2,
                     Date = new DateTime(2017, 06, 16, 14, 21, 12)
@@ -2024,7 +2042,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment7.AddStatement(statement317);
                 var statement318 = new Statement()
                 {
-                    Production = 0.16 + GetRandomNumber(0, 0.16),
+                    Production = 0.16 + GetRandomNumber(0.05, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.3,
                     Date = new DateTime(2017, 06, 16, 14, 59, 47)
@@ -2032,7 +2050,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment7.AddStatement(statement318);
                 var statement319 = new Statement()
                 {
-                    Production = 0.250 + GetRandomNumber(0, 0.15),
+                    Production = 0.250 + GetRandomNumber(0.08, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.75,
                     Date = new DateTime(2017, 06, 16, 15, 29, 53)
@@ -2040,7 +2058,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment7.AddStatement(statement319);
                 var statement320 = new Statement()
                 {
-                    Production = 0.250 + GetRandomNumber(0, 0.15),
+                    Production = 0.250 + GetRandomNumber(0.08, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.75,
                     Date = new DateTime(2017, 06, 16, 15, 57, 38)
@@ -2048,7 +2066,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment7.AddStatement(statement320);
                 var statement321 = new Statement()
                 {
-                    Production = 0.240 + GetRandomNumber(0, 0.15),
+                    Production = 0.240 + GetRandomNumber(0.08, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.7,
                     Date = new DateTime(2017, 06, 16, 16, 33, 12)
@@ -2056,7 +2074,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment7.AddStatement(statement321);
                 var statement322 = new Statement()
                 {
-                    Production = 0.220 + GetRandomNumber(0, 0.16),
+                    Production = 0.220 + GetRandomNumber(0.05, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.6,
                     Date = new DateTime(2017, 06, 16, 16, 59, 01)
@@ -2064,7 +2082,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment7.AddStatement(statement322);
                 var statement323 = new Statement()
                 {
-                    Production = 0.220 + GetRandomNumber(0, 0.16),
+                    Production = 0.220 + GetRandomNumber(0.05, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.6,
                     Date = new DateTime(2017, 06, 16, 17, 23, 07)
@@ -2072,7 +2090,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment7.AddStatement(statement323);
                 var statement324 = new Statement()
                 {
-                    Production = 0.18 + GetRandomNumber(0, 0.08),
+                    Production = 0.18 + GetRandomNumber(0.01, 0.0006),
                     Consommation = 0.5,
                     OverProduction = 0.4,
                     Date = new DateTime(2017, 06, 16, 17, 57, 31)
@@ -2080,7 +2098,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment7.AddStatement(statement324);
                 var statement325 = new Statement()
                 {
-                    Production = 0.14 + GetRandomNumber(0, 0.05),
+                    Production = 0.14 + GetRandomNumber(0.0025, 0.0035),
                     Consommation = 1,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 18, 37, 46)
@@ -2088,7 +2106,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment7.AddStatement(statement325);
                 var statement326 = new Statement()
                 {
-                    Production = 0.12 + GetRandomNumber(0, 0.09),
+                    Production = 0.12 + GetRandomNumber(0.01, 0.08),
                     Consommation = 1,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 18, 51, 12)
@@ -2096,7 +2114,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment7.AddStatement(statement326);
                 var statement327 = new Statement()
                 {
-                    Production = 0.10 + GetRandomNumber(0, 0.06),
+                    Production = 0.10 + GetRandomNumber(0.01, 0.0020),
                     Consommation = 2,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 19, 21, 56)
@@ -2104,7 +2122,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment7.AddStatement(statement327);
                 var statement328 = new Statement()
                 {
-                    Production = 0.08 + GetRandomNumber(0, 0.06),
+                    Production = 0.08 + GetRandomNumber(0.01, 0.0020),
                     Consommation = 2.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 19, 51, 13)
@@ -2112,7 +2130,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment7.AddStatement(statement328);
                 var statement329 = new Statement()
                 {
-                    Production = 0.04 + GetRandomNumber(0, 0.015),
+                    Production = 0.04 + GetRandomNumber(0.009, 0.012),
                     Consommation = 2.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 20, 30, 01)
@@ -2120,7 +2138,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment7.AddStatement(statement329);
                 var statement330 = new Statement()
                 {
-                    Production = 0.04 + GetRandomNumber(0, 0.015),
+                    Production = 0.04 + GetRandomNumber(0.009, 0.012),
                     Consommation = 3,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 20, 55, 57)
@@ -2144,7 +2162,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment7.AddStatement(statement332);
                 var statement333 = new Statement()
                 {
-                    Production = 0.024 + GetRandomNumber(0, 0.019),
+                    Production = 0.024 + GetRandomNumber(0.005, 0.001),
                     Consommation = 1,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 22, 29, 57)
@@ -2306,7 +2324,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment6.AddStatement(statement255);
                 var statement256 = new Statement()
                 {
-                    Production = 0.001 + GetRandomNumber(0, 0.001),
+                    Production = 0.001 + GetRandomNumber(0.005, 0.001),
                     Consommation = 1,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 07, 31, 49)
@@ -2314,7 +2332,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment6.AddStatement(statement256);
                 var statement257 = new Statement()
                 {
-                    Production = 0.001 + GetRandomNumber(0, 0.019),
+                    Production = 0.001 + GetRandomNumber(0.005, 0.001),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 08, 02, 07)
@@ -2322,7 +2340,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment6.AddStatement(statement257);
                 var statement258 = new Statement()
                 {
-                    Production = 0.015 + GetRandomNumber(0, 0.001),
+                    Production = 0.015 + GetRandomNumber(0.005, 0.001),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 08, 27, 35)
@@ -2330,7 +2348,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment6.AddStatement(statement258);
                 var statement259 = new Statement()
                 {
-                    Production = 0.010 + GetRandomNumber(0, 0.009),
+                    Production = 0.010 + GetRandomNumber(0.005, 0.01),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 09, 00, 00)
@@ -2338,7 +2356,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment6.AddStatement(statement259);
                 var statement260 = new Statement()
                 {
-                    Production = 0.012 + GetRandomNumber(0, 0.012),
+                    Production = 0.012 + GetRandomNumber(0.006, 0.012),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 09, 27, 42)
@@ -2346,7 +2364,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment6.AddStatement(statement260);
                 var statement261 = new Statement()
                 {
-                    Production = 0.018 + GetRandomNumber(0, 0.015),
+                    Production = 0.018 + GetRandomNumber(0.009, 0.012),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 09, 59, 03)
@@ -2354,7 +2372,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment6.AddStatement(statement261);
                 var statement262 = new Statement()
                 {
-                    Production = 0.056 + GetRandomNumber(0, 0.05),
+                    Production = 0.056 + GetRandomNumber(0.0025, 0.0035),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 10, 28, 13)
@@ -2362,7 +2380,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment6.AddStatement(statement262);
                 var statement263 = new Statement()
                 {
-                    Production = 0.084 + GetRandomNumber(0, 0.06),
+                    Production = 0.084 + GetRandomNumber(0.01, 0.0020),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 10, 59, 59)
@@ -2370,7 +2388,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment6.AddStatement(statement263);
                 var statement264 = new Statement()
                 {
-                    Production = 0.06 + GetRandomNumber(0, 0.06),
+                    Production = 0.06 + GetRandomNumber(0.01, 0.0020),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 11, 34, 15)
@@ -2378,7 +2396,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment6.AddStatement(statement264);
                 var statement265 = new Statement()
                 {
-                    Production = 0.08 + GetRandomNumber(0, 0.05),
+                    Production = 0.08 + GetRandomNumber(0.0025, 0.0035),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 11, 58, 39)
@@ -2386,7 +2404,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment6.AddStatement(statement265);
                 var statement266 = new Statement()
                 {
-                    Production = 0.08 + GetRandomNumber(0, 0.08),
+                    Production = 0.08 + GetRandomNumber(0.01, 0.0006),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 12, 32, 57)
@@ -2394,7 +2412,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment6.AddStatement(statement266);
                 var statement267 = new Statement()
                 {
-                    Production = 0.08 + GetRandomNumber(0, 0.08),
+                    Production = 0.08 + GetRandomNumber(0.01, 0.0006),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 12, 52, 49)
@@ -2402,7 +2420,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment6.AddStatement(statement267);
                 var statement268 = new Statement()
                 {
-                    Production = 0.10 + GetRandomNumber(0, 0.10),
+                    Production = 0.10 + GetRandomNumber(0.05, 0.09),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 13, 24, 33)
@@ -2410,7 +2428,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment6.AddStatement(statement268);
                 var statement269 = new Statement()
                 {
-                    Production = 0.14 + GetRandomNumber(0, 0.10),
+                    Production = 0.14 + GetRandomNumber(0.05, 0.09),
                     Consommation = 0.5,
                     OverProduction = 0.2,
                     Date = new DateTime(2017, 06, 16, 13, 51, 47)
@@ -2418,7 +2436,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment6.AddStatement(statement269);
                 var statement270 = new Statement()
                 {
-                    Production = 0.14 + GetRandomNumber(0, 0.12),
+                    Production = 0.14 + GetRandomNumber(0.05, 0.09),
                     Consommation = 0.5,
                     OverProduction = 0.2,
                     Date = new DateTime(2017, 06, 16, 14, 21, 12)
@@ -2426,7 +2444,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment6.AddStatement(statement270);
                 var statement271 = new Statement()
                 {
-                    Production = 0.16 + GetRandomNumber(0, 0.16),
+                    Production = 0.16 + GetRandomNumber(0.05, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.3,
                     Date = new DateTime(2017, 06, 16, 14, 59, 47)
@@ -2434,7 +2452,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment6.AddStatement(statement271);
                 var statement272 = new Statement()
                 {
-                    Production = 0.250 + GetRandomNumber(0, 0.15),
+                    Production = 0.250 + GetRandomNumber(0.08, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.75,
                     Date = new DateTime(2017, 06, 16, 15, 29, 53)
@@ -2442,7 +2460,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment6.AddStatement(statement272);
                 var statement273 = new Statement()
                 {
-                    Production = 0.250 + GetRandomNumber(0, 0.15),
+                    Production = 0.250 + GetRandomNumber(0.08, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.75,
                     Date = new DateTime(2017, 06, 16, 15, 57, 38)
@@ -2450,7 +2468,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment6.AddStatement(statement273);
                 var statement274 = new Statement()
                 {
-                    Production = 0.240 + GetRandomNumber(0, 0.15),
+                    Production = 0.240 + GetRandomNumber(0.08, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.7,
                     Date = new DateTime(2017, 06, 16, 16, 33, 12)
@@ -2458,7 +2476,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment6.AddStatement(statement274);
                 var statement275 = new Statement()
                 {
-                    Production = 0.220 + GetRandomNumber(0, 0.16),
+                    Production = 0.220 + GetRandomNumber(0.05, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.6,
                     Date = new DateTime(2017, 06, 16, 16, 59, 01)
@@ -2466,7 +2484,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment6.AddStatement(statement275);
                 var statement276 = new Statement()
                 {
-                    Production = 0.220 + GetRandomNumber(0, 0.16),
+                    Production = 0.220 + GetRandomNumber(0.05, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.6,
                     Date = new DateTime(2017, 06, 16, 17, 23, 07)
@@ -2474,7 +2492,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment6.AddStatement(statement276);
                 var statement277 = new Statement()
                 {
-                    Production = 0.18 + GetRandomNumber(0, 0.08),
+                    Production = 0.18 + GetRandomNumber(0.01, 0.0006),
                     Consommation = 0.5,
                     OverProduction = 0.4,
                     Date = new DateTime(2017, 06, 16, 17, 57, 31)
@@ -2482,7 +2500,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment6.AddStatement(statement277);
                 var statement278 = new Statement()
                 {
-                    Production = 0.14 + GetRandomNumber(0, 0.05),
+                    Production = 0.14 + GetRandomNumber(0.0025, 0.0035),
                     Consommation = 1,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 18, 37, 46)
@@ -2490,7 +2508,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment6.AddStatement(statement278);
                 var statement279 = new Statement()
                 {
-                    Production = 0.12 + GetRandomNumber(0, 0.09),
+                    Production = 0.12 + GetRandomNumber(0.01, 0.08),
                     Consommation = 1,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 18, 51, 12)
@@ -2498,7 +2516,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment6.AddStatement(statement279);
                 var statement280 = new Statement()
                 {
-                    Production = 0.10 + GetRandomNumber(0, 0.06),
+                    Production = 0.10 + GetRandomNumber(0.01, 0.0020),
                     Consommation = 2,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 19, 21, 56)
@@ -2506,7 +2524,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment6.AddStatement(statement280);
                 var statement281 = new Statement()
                 {
-                    Production = 0.08 + GetRandomNumber(0, 0.06),
+                    Production = 0.08 + GetRandomNumber(0.01, 0.0020),
                     Consommation = 2.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 19, 51, 13)
@@ -2514,7 +2532,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment6.AddStatement(statement281);
                 var statement282 = new Statement()
                 {
-                    Production = 0.04 + GetRandomNumber(0, 0.015),
+                    Production = 0.04 + GetRandomNumber(0.009, 0.012),
                     Consommation = 2.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 20, 30, 01)
@@ -2522,7 +2540,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment6.AddStatement(statement282);
                 var statement283 = new Statement()
                 {
-                    Production = 0.04 + GetRandomNumber(0, 0.015),
+                    Production = 0.04 + GetRandomNumber(0.009, 0.012),
                     Consommation = 3,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 20, 55, 57)
@@ -2546,7 +2564,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment6.AddStatement(statement285);
                 var statement286 = new Statement()
                 {
-                    Production = 0.024 + GetRandomNumber(0, 0.019),
+                    Production = 0.024 + GetRandomNumber(0.005, 0.001),
                     Consommation = 1,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 22, 29, 57)
@@ -2708,7 +2726,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment5.AddStatement(statement207);
                 var statement208 = new Statement()
                 {
-                    Production = 0.001 + GetRandomNumber(0, 0.001),
+                    Production = 0.001 + GetRandomNumber(0.005, 0.001),
                     Consommation = 1,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 07, 31, 49)
@@ -2716,7 +2734,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment5.AddStatement(statement208);
                 var statement209 = new Statement()
                 {
-                    Production = 0.001 + GetRandomNumber(0, 0.019),
+                    Production = 0.001 + GetRandomNumber(0.005, 0.001),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 08, 02, 07)
@@ -2724,7 +2742,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment5.AddStatement(statement209);
                 var statement210 = new Statement()
                 {
-                    Production = 0.015 + GetRandomNumber(0, 0.001),
+                    Production = 0.015 + GetRandomNumber(0.005, 0.001),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 08, 27, 35)
@@ -2732,7 +2750,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment5.AddStatement(statement210);
                 var statement211 = new Statement()
                 {
-                    Production = 0.010 + GetRandomNumber(0, 0.009),
+                    Production = 0.010 + GetRandomNumber(0.005, 0.01),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 09, 00, 00)
@@ -2740,7 +2758,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment5.AddStatement(statement211);
                 var statement212 = new Statement()
                 {
-                    Production = 0.012 + GetRandomNumber(0, 0.012),
+                    Production = 0.012 + GetRandomNumber(0.006, 0.012),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 09, 27, 42)
@@ -2748,7 +2766,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment5.AddStatement(statement212);
                 var statement213 = new Statement()
                 {
-                    Production = 0.018 + GetRandomNumber(0, 0.015),
+                    Production = 0.018 + GetRandomNumber(0.009, 0.012),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 09, 59, 03)
@@ -2756,7 +2774,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment5.AddStatement(statement213);
                 var statement214 = new Statement()
                 {
-                    Production = 0.056 + GetRandomNumber(0, 0.05),
+                    Production = 0.056 + GetRandomNumber(0.0025, 0.0035),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 10, 28, 13)
@@ -2764,7 +2782,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment5.AddStatement(statement214);
                 var statement215 = new Statement()
                 {
-                    Production = 0.084 + GetRandomNumber(0, 0.06),
+                    Production = 0.084 + GetRandomNumber(0.01, 0.0020),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 10, 59, 59)
@@ -2772,7 +2790,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment5.AddStatement(statement215);
                 var statement216 = new Statement()
                 {
-                    Production = 0.06 + GetRandomNumber(0, 0.06),
+                    Production = 0.06 + GetRandomNumber(0.01, 0.0020),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 11, 34, 15)
@@ -2780,7 +2798,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment5.AddStatement(statement216);
                 var statement217 = new Statement()
                 {
-                    Production = 0.08 + GetRandomNumber(0, 0.05),
+                    Production = 0.08 + GetRandomNumber(0.0025, 0.0035),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 11, 58, 39)
@@ -2788,7 +2806,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment5.AddStatement(statement217);
                 var statement218 = new Statement()
                 {
-                    Production = 0.08 + GetRandomNumber(0, 0.08),
+                    Production = 0.08 + GetRandomNumber(0.01, 0.0006),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 12, 32, 57)
@@ -2796,7 +2814,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment5.AddStatement(statement218);
                 var statement219 = new Statement()
                 {
-                    Production = 0.08 + GetRandomNumber(0, 0.08),
+                    Production = 0.08 + GetRandomNumber(0.01, 0.0006),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 12, 52, 49)
@@ -2804,7 +2822,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment5.AddStatement(statement219);
                 var statement220 = new Statement()
                 {
-                    Production = 0.10 + GetRandomNumber(0, 0.10),
+                    Production = 0.10 + GetRandomNumber(0.05, 0.09),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 13, 24, 33)
@@ -2812,7 +2830,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment5.AddStatement(statement220);
                 var statement221 = new Statement()
                 {
-                    Production = 0.14 + GetRandomNumber(0, 0.10),
+                    Production = 0.14 + GetRandomNumber(0.05, 0.09),
                     Consommation = 0.5,
                     OverProduction = 0.2,
                     Date = new DateTime(2017, 06, 16, 13, 51, 47)
@@ -2820,7 +2838,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment5.AddStatement(statement221);
                 var statement222 = new Statement()
                 {
-                    Production = 0.14 + GetRandomNumber(0, 0.12),
+                    Production = 0.14 + GetRandomNumber(0.05, 0.09),
                     Consommation = 0.5,
                     OverProduction = 0.2,
                     Date = new DateTime(2017, 06, 16, 14, 21, 12)
@@ -2828,7 +2846,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment5.AddStatement(statement222);
                 var statement223 = new Statement()
                 {
-                    Production = 0.16 + GetRandomNumber(0, 0.16),
+                    Production = 0.16 + GetRandomNumber(0.05, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.3,
                     Date = new DateTime(2017, 06, 16, 14, 59, 47)
@@ -2836,7 +2854,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment5.AddStatement(statement223);
                 var statement224 = new Statement()
                 {
-                    Production = 0.250 + GetRandomNumber(0, 0.15),
+                    Production = 0.250 + GetRandomNumber(0.08, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.75,
                     Date = new DateTime(2017, 06, 16, 15, 29, 53)
@@ -2844,7 +2862,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment5.AddStatement(statement224);
                 var statement225 = new Statement()
                 {
-                    Production = 0.250 + GetRandomNumber(0, 0.15),
+                    Production = 0.250 + GetRandomNumber(0.08, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.75,
                     Date = new DateTime(2017, 06, 16, 15, 57, 38)
@@ -2852,7 +2870,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment5.AddStatement(statement225);
                 var statement226 = new Statement()
                 {
-                    Production = 0.240 + GetRandomNumber(0, 0.15),
+                    Production = 0.240 + GetRandomNumber(0.08, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.7,
                     Date = new DateTime(2017, 06, 16, 16, 33, 12)
@@ -2860,7 +2878,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment5.AddStatement(statement226);
                 var statement227 = new Statement()
                 {
-                    Production = 0.220 + GetRandomNumber(0, 0.16),
+                    Production = 0.220 + GetRandomNumber(0.05, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.6,
                     Date = new DateTime(2017, 06, 16, 16, 59, 01)
@@ -2868,7 +2886,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment5.AddStatement(statement227);
                 var statement228 = new Statement()
                 {
-                    Production = 0.220 + GetRandomNumber(0, 0.16),
+                    Production = 0.220 + GetRandomNumber(0.05, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.6,
                     Date = new DateTime(2017, 06, 16, 17, 23, 07)
@@ -2876,7 +2894,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment5.AddStatement(statement228);
                 var statement229 = new Statement()
                 {
-                    Production = 0.18 + GetRandomNumber(0, 0.08),
+                    Production = 0.18 + GetRandomNumber(0.01, 0.0006),
                     Consommation = 0.5,
                     OverProduction = 0.4,
                     Date = new DateTime(2017, 06, 16, 17, 57, 31)
@@ -2884,7 +2902,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment5.AddStatement(statement229);
                 var statement230 = new Statement()
                 {
-                    Production = 0.14 + GetRandomNumber(0, 0.05),
+                    Production = 0.14 + GetRandomNumber(0.0025, 0.0035),
                     Consommation = 1,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 18, 37, 46)
@@ -2892,7 +2910,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment5.AddStatement(statement230);
                 var statement231 = new Statement()
                 {
-                    Production = 0.12 + GetRandomNumber(0, 0.09),
+                    Production = 0.12 + GetRandomNumber(0.01, 0.08),
                     Consommation = 1,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 18, 51, 12)
@@ -2900,7 +2918,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment5.AddStatement(statement231);
                 var statement232 = new Statement()
                 {
-                    Production = 0.10 + GetRandomNumber(0, 0.06),
+                    Production = 0.10 + GetRandomNumber(0.01, 0.0020),
                     Consommation = 2,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 19, 21, 56)
@@ -2908,7 +2926,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment5.AddStatement(statement232);
                 var statement233 = new Statement()
                 {
-                    Production = 0.08 + GetRandomNumber(0, 0.06),
+                    Production = 0.08 + GetRandomNumber(0.01, 0.0020),
                     Consommation = 2.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 19, 51, 13)
@@ -2916,7 +2934,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment5.AddStatement(statement233);
                 var statement234 = new Statement()
                 {
-                    Production = 0.04 + GetRandomNumber(0, 0.015),
+                    Production = 0.04 + GetRandomNumber(0.009, 0.012),
                     Consommation = 2.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 20, 30, 01)
@@ -2924,7 +2942,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment5.AddStatement(statement234);
                 var statement235 = new Statement()
                 {
-                    Production = 0.04 + GetRandomNumber(0, 0.015),
+                    Production = 0.04 + GetRandomNumber(0.009, 0.012),
                     Consommation = 3,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 20, 55, 57)
@@ -2948,7 +2966,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment5.AddStatement(statement237);
                 var statement238 = new Statement()
                 {
-                    Production = 0.024 + GetRandomNumber(0, 0.019),
+                    Production = 0.024 + GetRandomNumber(0.005, 0.001),
                     Consommation = 1,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 22, 29, 57)
@@ -3110,7 +3128,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment8.AddStatement(statement350);
                 var statement351 = new Statement()
                 {
-                    Production = 0.001 + GetRandomNumber(0, 0.001),
+                    Production = 0.001 + GetRandomNumber(0.005, 0.001),
                     Consommation = 1,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 07, 31, 49)
@@ -3118,7 +3136,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment8.AddStatement(statement351);
                 var statement352 = new Statement()
                 {
-                    Production = 0.001 + GetRandomNumber(0, 0.019),
+                    Production = 0.001 + GetRandomNumber(0.005, 0.001),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 08, 02, 07)
@@ -3126,7 +3144,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment8.AddStatement(statement352);
                 var statement353 = new Statement()
                 {
-                    Production = 0.015 + GetRandomNumber(0, 0.001),
+                    Production = 0.015 + GetRandomNumber(0.005, 0.001),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 08, 27, 35)
@@ -3134,7 +3152,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment8.AddStatement(statement353);
                 var statement354 = new Statement()
                 {
-                    Production = 0.010 + GetRandomNumber(0, 0.009),
+                    Production = 0.010 + GetRandomNumber(0.005, 0.01),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 09, 00, 00)
@@ -3142,7 +3160,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment8.AddStatement(statement354);
                 var statement355 = new Statement()
                 {
-                    Production = 0.012 + GetRandomNumber(0, 0.012),
+                    Production = 0.012 + GetRandomNumber(0.006, 0.012),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 09, 27, 42)
@@ -3150,7 +3168,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment8.AddStatement(statement355);
                 var statement356 = new Statement()
                 {
-                    Production = 0.018 + GetRandomNumber(0, 0.015),
+                    Production = 0.018 + GetRandomNumber(0.009, 0.012),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 09, 59, 03)
@@ -3158,7 +3176,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment8.AddStatement(statement356);
                 var statement357 = new Statement()
                 {
-                    Production = 0.056 + GetRandomNumber(0, 0.05),
+                    Production = 0.056 + GetRandomNumber(0.0025, 0.0035),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 10, 28, 13)
@@ -3166,7 +3184,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment8.AddStatement(statement357);
                 var statement358 = new Statement()
                 {
-                    Production = 0.084 + GetRandomNumber(0, 0.06),
+                    Production = 0.084 + GetRandomNumber(0.01, 0.0020),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 10, 59, 59)
@@ -3174,7 +3192,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment8.AddStatement(statement358);
                 var statement359 = new Statement()
                 {
-                    Production = 0.06 + GetRandomNumber(0, 0.06),
+                    Production = 0.06 + GetRandomNumber(0.01, 0.0020),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 11, 34, 15)
@@ -3182,7 +3200,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment8.AddStatement(statement359);
                 var statement360 = new Statement()
                 {
-                    Production = 0.08 + GetRandomNumber(0, 0.05),
+                    Production = 0.08 + GetRandomNumber(0.0025, 0.0035),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 11, 58, 39)
@@ -3190,7 +3208,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment8.AddStatement(statement360);
                 var statement361 = new Statement()
                 {
-                    Production = 0.08 + GetRandomNumber(0, 0.08),
+                    Production = 0.08 + GetRandomNumber(0.01, 0.0006),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 12, 32, 57)
@@ -3198,7 +3216,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment8.AddStatement(statement361);
                 var statement362 = new Statement()
                 {
-                    Production = 0.08 + GetRandomNumber(0, 0.08),
+                    Production = 0.08 + GetRandomNumber(0.01, 0.0006),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 12, 52, 49)
@@ -3206,7 +3224,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment8.AddStatement(statement362);
                 var statement363 = new Statement()
                 {
-                    Production = 0.10 + GetRandomNumber(0, 0.10),
+                    Production = 0.10 + GetRandomNumber(0.05, 0.09),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 13, 24, 33)
@@ -3214,7 +3232,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment8.AddStatement(statement363);
                 var statement364 = new Statement()
                 {
-                    Production = 0.14 + GetRandomNumber(0, 0.10),
+                    Production = 0.14 + GetRandomNumber(0.05, 0.09),
                     Consommation = 0.5,
                     OverProduction = 0.2,
                     Date = new DateTime(2017, 06, 16, 13, 51, 47)
@@ -3222,7 +3240,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment8.AddStatement(statement364);
                 var statement365 = new Statement()
                 {
-                    Production = 0.14 + GetRandomNumber(0, 0.12),
+                    Production = 0.14 + GetRandomNumber(0.05, 0.09),
                     Consommation = 0.5,
                     OverProduction = 0.2,
                     Date = new DateTime(2017, 06, 16, 14, 21, 12)
@@ -3230,7 +3248,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment8.AddStatement(statement365);
                 var statement366 = new Statement()
                 {
-                    Production = 0.16 + GetRandomNumber(0, 0.16),
+                    Production = 0.16 + GetRandomNumber(0.05, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.3,
                     Date = new DateTime(2017, 06, 16, 14, 59, 47)
@@ -3238,7 +3256,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment8.AddStatement(statement366);
                 var statement367 = new Statement()
                 {
-                    Production = 0.250 + GetRandomNumber(0, 0.15),
+                    Production = 0.250 + GetRandomNumber(0.08, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.75,
                     Date = new DateTime(2017, 06, 16, 15, 29, 53)
@@ -3246,7 +3264,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment8.AddStatement(statement367);
                 var statement368 = new Statement()
                 {
-                    Production = 0.250 + GetRandomNumber(0, 0.15),
+                    Production = 0.250 + GetRandomNumber(0.08, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.75,
                     Date = new DateTime(2017, 06, 16, 15, 57, 38)
@@ -3254,7 +3272,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment8.AddStatement(statement368);
                 var statement369 = new Statement()
                 {
-                    Production = 0.240 + GetRandomNumber(0, 0.15),
+                    Production = 0.240 + GetRandomNumber(0.08, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.7,
                     Date = new DateTime(2017, 06, 16, 16, 33, 12)
@@ -3262,7 +3280,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment8.AddStatement(statement369);
                 var statement370 = new Statement()
                 {
-                    Production = 0.220 + GetRandomNumber(0, 0.16),
+                    Production = 0.220 + GetRandomNumber(0.05, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.6,
                     Date = new DateTime(2017, 06, 16, 16, 59, 01)
@@ -3270,7 +3288,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment8.AddStatement(statement370);
                 var statement371 = new Statement()
                 {
-                    Production = 0.220 + GetRandomNumber(0, 0.16),
+                    Production = 0.220 + GetRandomNumber(0.05, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.6,
                     Date = new DateTime(2017, 06, 16, 17, 23, 07)
@@ -3278,7 +3296,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment8.AddStatement(statement371);
                 var statement372 = new Statement()
                 {
-                    Production = 0.18 + GetRandomNumber(0, 0.08),
+                    Production = 0.18 + GetRandomNumber(0.01, 0.0006),
                     Consommation = 0.5,
                     OverProduction = 0.4,
                     Date = new DateTime(2017, 06, 16, 17, 57, 31)
@@ -3286,7 +3304,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment8.AddStatement(statement372);
                 var statement373 = new Statement()
                 {
-                    Production = 0.14 + GetRandomNumber(0, 0.05),
+                    Production = 0.14 + GetRandomNumber(0.0025, 0.0035),
                     Consommation = 1,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 18, 37, 46)
@@ -3294,7 +3312,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment8.AddStatement(statement373);
                 var statement374 = new Statement()
                 {
-                    Production = 0.12 + GetRandomNumber(0, 0.09),
+                    Production = 0.12 + GetRandomNumber(0.01, 0.08),
                     Consommation = 1,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 18, 51, 12)
@@ -3302,7 +3320,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment8.AddStatement(statement374);
                 var statement375 = new Statement()
                 {
-                    Production = 0.10 + GetRandomNumber(0, 0.06),
+                    Production = 0.10 + GetRandomNumber(0.01, 0.0020),
                     Consommation = 2,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 19, 21, 56)
@@ -3310,7 +3328,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment8.AddStatement(statement375);
                 var statement376 = new Statement()
                 {
-                    Production = 0.08 + GetRandomNumber(0, 0.06),
+                    Production = 0.08 + GetRandomNumber(0.01, 0.0020),
                     Consommation = 2.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 19, 51, 13)
@@ -3318,7 +3336,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment8.AddStatement(statement376);
                 var statement377 = new Statement()
                 {
-                    Production = 0.04 + GetRandomNumber(0, 0.015),
+                    Production = 0.04 + GetRandomNumber(0.009, 0.012),
                     Consommation = 2.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 20, 30, 01)
@@ -3326,7 +3344,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment8.AddStatement(statement377);
                 var statement378 = new Statement()
                 {
-                    Production = 0.04 + GetRandomNumber(0, 0.015),
+                    Production = 0.04 + GetRandomNumber(0.009, 0.012),
                     Consommation = 3,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 20, 55, 57)
@@ -3350,7 +3368,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment8.AddStatement(statement380);
                 var statement381 = new Statement()
                 {
-                    Production = 0.024 + GetRandomNumber(0, 0.019),
+                    Production = 0.024 + GetRandomNumber(0.005, 0.001),
                     Consommation = 1,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 22, 29, 57)
@@ -3512,7 +3530,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment9.AddStatement(statement399);
                 var statement400 = new Statement()
                 {
-                    Production = 0.001 + GetRandomNumber(0, 0.001),
+                    Production = 0.001 + GetRandomNumber(0.005, 0.001),
                     Consommation = 1,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 07, 31, 49)
@@ -3520,7 +3538,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment9.AddStatement(statement400);
                 var statement401 = new Statement()
                 {
-                    Production = 0.001 + GetRandomNumber(0, 0.019),
+                    Production = 0.001 + GetRandomNumber(0.005, 0.001),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 08, 02, 07)
@@ -3528,7 +3546,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment9.AddStatement(statement401);
                 var statement402 = new Statement()
                 {
-                    Production = 0.015 + GetRandomNumber(0, 0.001),
+                    Production = 0.015 + GetRandomNumber(0.005, 0.001),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 08, 27, 35)
@@ -3536,7 +3554,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment9.AddStatement(statement402);
                 var statement403 = new Statement()
                 {
-                    Production = 0.010 + GetRandomNumber(0, 0.009),
+                    Production = 0.010 + GetRandomNumber(0.005, 0.01),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 09, 00, 00)
@@ -3544,7 +3562,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment9.AddStatement(statement403);
                 var statement404 = new Statement()
                 {
-                    Production = 0.012 + GetRandomNumber(0, 0.012),
+                    Production = 0.012 + GetRandomNumber(0.006, 0.012),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 09, 27, 42)
@@ -3552,7 +3570,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment9.AddStatement(statement404);
                 var statement405 = new Statement()
                 {
-                    Production = 0.018 + GetRandomNumber(0, 0.015),
+                    Production = 0.018 + GetRandomNumber(0.009, 0.012),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 09, 59, 03)
@@ -3560,7 +3578,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment9.AddStatement(statement405);
                 var statement406 = new Statement()
                 {
-                    Production = 0.056 + GetRandomNumber(0, 0.05),
+                    Production = 0.056 + GetRandomNumber(0.0025, 0.0035),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 10, 28, 13)
@@ -3568,7 +3586,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment9.AddStatement(statement406);
                 var statement407 = new Statement()
                 {
-                    Production = 0.084 + GetRandomNumber(0, 0.06),
+                    Production = 0.084 + GetRandomNumber(0.01, 0.0020),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 10, 59, 59)
@@ -3576,7 +3594,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment9.AddStatement(statement407);
                 var statement408 = new Statement()
                 {
-                    Production = 0.06 + GetRandomNumber(0, 0.06),
+                    Production = 0.06 + GetRandomNumber(0.01, 0.0020),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 11, 34, 15)
@@ -3584,7 +3602,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment9.AddStatement(statement408);
                 var statement409 = new Statement()
                 {
-                    Production = 0.08 + GetRandomNumber(0, 0.05),
+                    Production = 0.08 + GetRandomNumber(0.0025, 0.0035),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 11, 58, 39)
@@ -3592,7 +3610,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment9.AddStatement(statement409);
                 var statement410 = new Statement()
                 {
-                    Production = 0.08 + GetRandomNumber(0, 0.08),
+                    Production = 0.08 + GetRandomNumber(0.01, 0.0006),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 12, 32, 57)
@@ -3600,7 +3618,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment9.AddStatement(statement410);
                 var statement411 = new Statement()
                 {
-                    Production = 0.08 + GetRandomNumber(0, 0.08),
+                    Production = 0.08 + GetRandomNumber(0.01, 0.0006),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 12, 52, 49)
@@ -3608,7 +3626,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment9.AddStatement(statement411);
                 var statement412 = new Statement()
                 {
-                    Production = 0.10 + GetRandomNumber(0, 0.10),
+                    Production = 0.10 + GetRandomNumber(0.05, 0.09),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 13, 24, 33)
@@ -3616,7 +3634,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment9.AddStatement(statement412);
                 var statement413 = new Statement()
                 {
-                    Production = 0.14 + GetRandomNumber(0, 0.10),
+                    Production = 0.14 + GetRandomNumber(0.05, 0.09),
                     Consommation = 0.5,
                     OverProduction = 0.2,
                     Date = new DateTime(2017, 06, 16, 13, 51, 47)
@@ -3624,7 +3642,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment9.AddStatement(statement413);
                 var statement414 = new Statement()
                 {
-                    Production = 0.14 + GetRandomNumber(0, 0.12),
+                    Production = 0.14 + GetRandomNumber(0.05, 0.09),
                     Consommation = 0.5,
                     OverProduction = 0.2,
                     Date = new DateTime(2017, 06, 16, 14, 21, 12)
@@ -3632,7 +3650,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment9.AddStatement(statement414);
                 var statement415 = new Statement()
                 {
-                    Production = 0.16 + GetRandomNumber(0, 0.16),
+                    Production = 0.16 + GetRandomNumber(0.05, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.3,
                     Date = new DateTime(2017, 06, 16, 14, 59, 47)
@@ -3640,7 +3658,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment9.AddStatement(statement415);
                 var statement416 = new Statement()
                 {
-                    Production = 0.250 + GetRandomNumber(0, 0.15),
+                    Production = 0.250 + GetRandomNumber(0.08, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.75,
                     Date = new DateTime(2017, 06, 16, 15, 29, 53)
@@ -3648,7 +3666,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment9.AddStatement(statement416);
                 var statement417 = new Statement()
                 {
-                    Production = 0.250 + GetRandomNumber(0, 0.15),
+                    Production = 0.250 + GetRandomNumber(0.08, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.75,
                     Date = new DateTime(2017, 06, 16, 15, 57, 38)
@@ -3656,7 +3674,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment9.AddStatement(statement417);
                 var statement418 = new Statement()
                 {
-                    Production = 0.240 + GetRandomNumber(0, 0.15),
+                    Production = 0.240 + GetRandomNumber(0.08, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.7,
                     Date = new DateTime(2017, 06, 16, 16, 33, 12)
@@ -3664,7 +3682,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment9.AddStatement(statement418);
                 var statement419 = new Statement()
                 {
-                    Production = 0.220 + GetRandomNumber(0, 0.16),
+                    Production = 0.220 + GetRandomNumber(0.05, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.6,
                     Date = new DateTime(2017, 06, 16, 16, 59, 01)
@@ -3672,7 +3690,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment9.AddStatement(statement419);
                 var statement420 = new Statement()
                 {
-                    Production = 0.220 + GetRandomNumber(0, 0.16),
+                    Production = 0.220 + GetRandomNumber(0.05, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.6,
                     Date = new DateTime(2017, 06, 16, 17, 23, 07)
@@ -3680,7 +3698,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment9.AddStatement(statement420);
                 var statement421 = new Statement()
                 {
-                    Production = 0.18 + GetRandomNumber(0, 0.08),
+                    Production = 0.18 + GetRandomNumber(0.01, 0.0006),
                     Consommation = 0.5,
                     OverProduction = 0.4,
                     Date = new DateTime(2017, 06, 16, 17, 57, 31)
@@ -3688,7 +3706,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment9.AddStatement(statement421);
                 var statement422 = new Statement()
                 {
-                    Production = 0.14 + GetRandomNumber(0, 0.05),
+                    Production = 0.14 + GetRandomNumber(0.0025, 0.0035),
                     Consommation = 1,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 18, 37, 46)
@@ -3696,7 +3714,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment9.AddStatement(statement422);
                 var statement423 = new Statement()
                 {
-                    Production = 0.12 + GetRandomNumber(0, 0.09),
+                    Production = 0.12 + GetRandomNumber(0.01, 0.08),
                     Consommation = 1,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 18, 51, 12)
@@ -3704,7 +3722,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment9.AddStatement(statement423);
                 var statement424 = new Statement()
                 {
-                    Production = 0.10 + GetRandomNumber(0, 0.06),
+                    Production = 0.10 + GetRandomNumber(0.01, 0.0020),
                     Consommation = 2,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 19, 21, 56)
@@ -3712,7 +3730,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment9.AddStatement(statement424);
                 var statement425 = new Statement()
                 {
-                    Production = 0.08 + GetRandomNumber(0, 0.06),
+                    Production = 0.08 + GetRandomNumber(0.01, 0.0020),
                     Consommation = 2.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 19, 51, 13)
@@ -3720,7 +3738,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment9.AddStatement(statement425);
                 var statement426 = new Statement()
                 {
-                    Production = 0.04 + GetRandomNumber(0, 0.015),
+                    Production = 0.04 + GetRandomNumber(0.009, 0.012),
                     Consommation = 2.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 20, 30, 01)
@@ -3728,7 +3746,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment9.AddStatement(statement426);
                 var statement427 = new Statement()
                 {
-                    Production = 0.04 + GetRandomNumber(0, 0.015),
+                    Production = 0.04 + GetRandomNumber(0.009, 0.012),
                     Consommation = 3,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 20, 55, 57)
@@ -3752,7 +3770,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment9.AddStatement(statement429);
                 var statement430 = new Statement()
                 {
-                    Production = 0.024 + GetRandomNumber(0, 0.019),
+                    Production = 0.024 + GetRandomNumber(0.005, 0.001),
                     Consommation = 1,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 22, 29, 57)
@@ -3789,6 +3807,7 @@ namespace ISEN.DotNet.Library.Data
                     statement432);
 
                 #endregion
+
                 #region statements equipment10
                 var statement433 = new Statement()
                 {
@@ -3912,7 +3931,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment10.AddStatement(statement447);
                 var statement448 = new Statement()
                 {
-                    Production = 0.001 + GetRandomNumber(0, 0.001),
+                    Production = 0.001 + GetRandomNumber(0.005, 0.001),
                     Consommation = 1,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 07, 31, 49)
@@ -3920,7 +3939,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment10.AddStatement(statement448);
                 var statement449 = new Statement()
                 {
-                    Production = 0.001 + GetRandomNumber(0, 0.019),
+                    Production = 0.001 + GetRandomNumber(0.005, 0.001),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 08, 02, 07)
@@ -3928,7 +3947,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment10.AddStatement(statement449);
                 var statement450 = new Statement()
                 {
-                    Production = 0.015 + GetRandomNumber(0, 0.001),
+                    Production = 0.015 + GetRandomNumber(0.005, 0.001),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 08, 27, 35)
@@ -3936,7 +3955,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment10.AddStatement(statement450);
                 var statement451 = new Statement()
                 {
-                    Production = 0.010 + GetRandomNumber(0, 0.009),
+                    Production = 0.010 + GetRandomNumber(0.005, 0.01),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 09, 00, 00)
@@ -3944,7 +3963,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment10.AddStatement(statement451);
                 var statement452 = new Statement()
                 {
-                    Production = 0.012 + GetRandomNumber(0, 0.012),
+                    Production = 0.012 + GetRandomNumber(0.006, 0.012),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 09, 27, 42)
@@ -3952,7 +3971,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment10.AddStatement(statement452);
                 var statement453 = new Statement()
                 {
-                    Production = 0.018 + GetRandomNumber(0, 0.015),
+                    Production = 0.018 + GetRandomNumber(0.009, 0.012),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 09, 59, 03)
@@ -3960,7 +3979,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment10.AddStatement(statement453);
                 var statement454 = new Statement()
                 {
-                    Production = 0.056 + GetRandomNumber(0, 0.05),
+                    Production = 0.056 + GetRandomNumber(0.0025, 0.0035),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 10, 28, 13)
@@ -3968,7 +3987,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment10.AddStatement(statement454);
                 var statement455 = new Statement()
                 {
-                    Production = 0.084 + GetRandomNumber(0, 0.06),
+                    Production = 0.084 + GetRandomNumber(0.01, 0.0020),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 10, 59, 59)
@@ -3976,7 +3995,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment10.AddStatement(statement455);
                 var statement456 = new Statement()
                 {
-                    Production = 0.06 + GetRandomNumber(0, 0.06),
+                    Production = 0.06 + GetRandomNumber(0.01, 0.0020),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 11, 34, 15)
@@ -3984,7 +4003,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment10.AddStatement(statement456);
                 var statement457 = new Statement()
                 {
-                    Production = 0.08 + GetRandomNumber(0, 0.05),
+                    Production = 0.08 + GetRandomNumber(0.0025, 0.0035),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 11, 58, 39)
@@ -3992,7 +4011,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment10.AddStatement(statement457);
                 var statement458 = new Statement()
                 {
-                    Production = 0.08 + GetRandomNumber(0, 0.08),
+                    Production = 0.08 + GetRandomNumber(0.01, 0.0006),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 12, 32, 57)
@@ -4000,7 +4019,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment10.AddStatement(statement458);
                 var statement459 = new Statement()
                 {
-                    Production = 0.08 + GetRandomNumber(0, 0.08),
+                    Production = 0.08 + GetRandomNumber(0.01, 0.0006),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 12, 52, 49)
@@ -4008,7 +4027,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment10.AddStatement(statement459);
                 var statement460 = new Statement()
                 {
-                    Production = 0.10 + GetRandomNumber(0, 0.10),
+                    Production = 0.10 + GetRandomNumber(0.05, 0.09),
                     Consommation = 0.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 13, 24, 33)
@@ -4016,7 +4035,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment10.AddStatement(statement460);
                 var statement461 = new Statement()
                 {
-                    Production = 0.14 + GetRandomNumber(0, 0.10),
+                    Production = 0.14 + GetRandomNumber(0.05, 0.09),
                     Consommation = 0.5,
                     OverProduction = 0.2,
                     Date = new DateTime(2017, 06, 16, 13, 51, 47)
@@ -4024,7 +4043,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment10.AddStatement(statement461);
                 var statement462 = new Statement()
                 {
-                    Production = 0.14 + GetRandomNumber(0, 0.12),
+                    Production = 0.14 + GetRandomNumber(0.05, 0.09),
                     Consommation = 0.5,
                     OverProduction = 0.2,
                     Date = new DateTime(2017, 06, 16, 14, 21, 12)
@@ -4032,7 +4051,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment10.AddStatement(statement462);
                 var statement463 = new Statement()
                 {
-                    Production = 0.16 + GetRandomNumber(0, 0.16),
+                    Production = 0.16 + GetRandomNumber(0.05, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.3,
                     Date = new DateTime(2017, 06, 16, 14, 59, 47)
@@ -4040,7 +4059,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment10.AddStatement(statement463);
                 var statement464 = new Statement()
                 {
-                    Production = 0.250 + GetRandomNumber(0, 0.15),
+                    Production = 0.250 + GetRandomNumber(0.08, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.75,
                     Date = new DateTime(2017, 06, 16, 15, 29, 53)
@@ -4048,7 +4067,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment10.AddStatement(statement464);
                 var statement465 = new Statement()
                 {
-                    Production = 0.250 + GetRandomNumber(0, 0.15),
+                    Production = 0.250 + GetRandomNumber(0.08, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.75,
                     Date = new DateTime(2017, 06, 16, 15, 57, 38)
@@ -4056,7 +4075,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment10.AddStatement(statement465);
                 var statement466 = new Statement()
                 {
-                    Production = 0.240 + GetRandomNumber(0, 0.15),
+                    Production = 0.240 + GetRandomNumber(0.08, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.7,
                     Date = new DateTime(2017, 06, 16, 16, 33, 12)
@@ -4064,7 +4083,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment10.AddStatement(statement466);
                 var statement467 = new Statement()
                 {
-                    Production = 0.220 + GetRandomNumber(0, 0.16),
+                    Production = 0.220 + GetRandomNumber(0.05, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.6,
                     Date = new DateTime(2017, 06, 16, 16, 59, 01)
@@ -4072,7 +4091,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment10.AddStatement(statement467);
                 var statement468 = new Statement()
                 {
-                    Production = 0.220 + GetRandomNumber(0, 0.16),
+                    Production = 0.220 + GetRandomNumber(0.05, 0.13),
                     Consommation = 0.5,
                     OverProduction = 0.6,
                     Date = new DateTime(2017, 06, 16, 17, 23, 07)
@@ -4080,7 +4099,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment10.AddStatement(statement468);
                 var statement469 = new Statement()
                 {
-                    Production = 0.18 + GetRandomNumber(0, 0.08),
+                    Production = 0.18 + GetRandomNumber(0.01, 0.0006),
                     Consommation = 0.5,
                     OverProduction = 0.4,
                     Date = new DateTime(2017, 06, 16, 17, 57, 31)
@@ -4088,7 +4107,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment10.AddStatement(statement469);
                 var statement470 = new Statement()
                 {
-                    Production = 0.14 + GetRandomNumber(0, 0.05),
+                    Production = 0.14 + GetRandomNumber(0.0025, 0.0035),
                     Consommation = 1,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 18, 37, 46)
@@ -4096,7 +4115,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment10.AddStatement(statement470);
                 var statement471 = new Statement()
                 {
-                    Production = 0.12 + GetRandomNumber(0, 0.09),
+                    Production = 0.12 + GetRandomNumber(0.01, 0.08),
                     Consommation = 1,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 18, 51, 12)
@@ -4104,7 +4123,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment10.AddStatement(statement471);
                 var statement472 = new Statement()
                 {
-                    Production = 0.10 + GetRandomNumber(0, 0.06),
+                    Production = 0.10 + GetRandomNumber(0.01, 0.0020),
                     Consommation = 2,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 19, 21, 56)
@@ -4112,7 +4131,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment10.AddStatement(statement472);
                 var statement473 = new Statement()
                 {
-                    Production = 0.08 + GetRandomNumber(0, 0.06),
+                    Production = 0.08 + GetRandomNumber(0.01, 0.0020),
                     Consommation = 2.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 19, 51, 13)
@@ -4120,7 +4139,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment10.AddStatement(statement473);
                 var statement474 = new Statement()
                 {
-                    Production = 0.04 + GetRandomNumber(0, 0.015),
+                    Production = 0.04 + GetRandomNumber(0.009, 0.012),
                     Consommation = 2.5,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 20, 30, 01)
@@ -4128,7 +4147,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment10.AddStatement(statement474);
                 var statement475 = new Statement()
                 {
-                    Production = 0.04 + GetRandomNumber(0, 0.015),
+                    Production = 0.04 + GetRandomNumber(0.009, 0.012),
                     Consommation = 3,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 20, 55, 57)
@@ -4152,7 +4171,7 @@ namespace ISEN.DotNet.Library.Data
                 equipment10.AddStatement(statement477);
                 var statement478 = new Statement()
                 {
-                    Production = 0.024 + GetRandomNumber(0, 0.019),
+                    Production = 0.024 + GetRandomNumber(0.005, 0.001),
                     Consommation = 1,
                     OverProduction = 0,
                     Date = new DateTime(2017, 06, 16, 22, 29, 57)
@@ -4182,6 +4201,7 @@ namespace ISEN.DotNet.Library.Data
                     statement472, statement473, statement474, statement475, statement476, statement477, statement478, statement479,
                     statement480);
                 #endregion
+
                 _statementRepository.Save();
             }
         }

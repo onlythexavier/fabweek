@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using ISEN.DotNet.Library.Repositories.Implementations;
 
@@ -89,16 +90,18 @@ namespace ISEN.DotNet.Web.Controllers
             foreach (var statement in statements1)
             {
                 var prod = 0.0;
+                var count = 0;
                 foreach (var state in statement)
                 {
+                    if (count == 0)
+                    {
+                        dataset1C.Data.Add(state.Consommation);
+                        data1.Labels.Add(state.Date.ToString(CultureInfo.CurrentCulture));
+                    }
+                    count++;
                     prod += state.Production;
-                    dataset1C.Data.Add(state.Consommation);
-                    data1.Labels.Add(state.Date.ToUniversalTime().ToString());
                 }
-                foreach (var state in statement)
-                {
-                    dataset1P.Data.Add(prod);
-                }
+                dataset1P.Data.Add(prod);
             }
 
             data1.Datasets = new List<Dataset> {dataset1P, dataset1C};
@@ -157,12 +160,22 @@ namespace ISEN.DotNet.Web.Controllers
                 PointHitRadius = new List<int> { 10 },
                 SpanGaps = false
             };
-            var statements2 = StatementRepository.Find(p => p.Equipment.Owner.Id == userOwner.Id).OrderBy(p => p.Date);
+            var statements2 = StatementRepository.Find(p => p.Equipment.Owner.Id == userOwner.Id).OrderBy(p => p.Date).GroupBy(p => p.Date);
             foreach (var statement in statements2)
             {
-                data2.Labels.Add(statement.Date.ToUniversalTime().ToString());
-                dataset2P.Data.Add(statement.Production);
-                dataset2C.Data.Add(statement.Consommation);
+                var prod = 0.0;
+                var count = 0;
+                foreach (var state in statement)
+                {
+                    if (count == 0)
+                    {
+                        dataset2C.Data.Add(state.Consommation);
+                        data2.Labels.Add(state.Date.ToString(CultureInfo.CurrentCulture));
+                    }
+                    count++;
+                    prod += state.Production;
+                }
+                dataset2P.Data.Add(prod);
             }
 
             data2.Datasets = new List<Dataset> { dataset2P, dataset2C };
@@ -195,7 +208,7 @@ namespace ISEN.DotNet.Web.Controllers
                     somme += test.Production;
                 }
                 dataset3.BackgroundColor.Add("rgba("+green+", 137, 35, 0.6)");
-                green += 50;
+                green += 20;
                 dataset3.Data.Add(somme);
             }
             
